@@ -27,5 +27,9 @@ class MainActivity2 : AppCompatActivity() {
         // Applica l'animazione alla TextView
         flashingIcon.startAnimation(blinkAnimation)
 
+        val textView = findViewById<TextView>(R.id.titoloApp)
+        val animation = AnimationUtils.loadAnimation(this, R.anim.title)
+        textView.startAnimation(animation)
+
     }
 }
