@@ -1,20 +1,31 @@
 package com.example.esempio
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.View
+import android.view.animation.AnimationUtils
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+
 
 class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main2)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        findViewById<View>(R.id.fullScreenView).setOnClickListener {
+            val intent = Intent(this, home::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
         }
+
+
+        val flashingIcon = findViewById<TextView>(R.id.flashingIcon)
+        // Carica l'animazione di blinking
+        val blinkAnimation = AnimationUtils.loadAnimation(this, R.anim.blink_animation)
+        // Applica l'animazione alla TextView
+        flashingIcon.startAnimation(blinkAnimation)
+
     }
 }
