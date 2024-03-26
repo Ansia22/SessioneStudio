@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="@+id/fullScreenView"
         app:layout_constraintStart_toStartOf="@+id/fullScreenView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.593" />
+        app:layout_constraintVertical_bias="0.832" />
 
     <View
         android:id="@+id/fullScreenView"
@@ -32,24 +32,26 @@
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/titoloApp"
-        android:layout_width="328dp"
-        android:layout_height="127dp"
+        android:layout_width="342dp"
+        android:layout_height="185dp"
         android:gravity="center"
-        android:text="SESSIONE STUDIO"
-        android:textAppearance="@style/crang"
-        android:textSize="20pt"
+        android:text="Sessione Studio"
+        android:textAppearance="@style/royal"
+        android:textSize="35pt"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/flashingIcon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fullScreenView"
-        app:layout_constraintVertical_bias="0.76" />
+        app:layout_constraintVertical_bias="0.518" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
