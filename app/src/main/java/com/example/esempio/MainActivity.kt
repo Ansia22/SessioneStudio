@@ -1,5 +1,6 @@
 package com.example.esempio
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.os.Handler
 import android.content.Intent
+import android.nfc.Tag
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,5 +29,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, MainActivity2::class.java)
             startActivity(intent)
         }, DELAY_TIME.toLong()) //  Converte il ritardo in un tipo Long
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.v(TAG,"distrutto")
     }
 }
