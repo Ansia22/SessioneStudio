@@ -25,6 +25,6 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed({
             val intent = Intent(this@MainActivity, MainActivity2::class.java)
             startActivity(intent)
-        }, DELAY_TIME.toLong()) // Assicurati di convertire il ritardo in un tipo Long
+        }, DELAY_TIME.toLong()) //  Converte il ritardo in un tipo Long
     }
 }
