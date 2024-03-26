@@ -1,7 +1,9 @@
 package com.example.esempio
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.TextView
@@ -31,5 +33,9 @@ class MainActivity2 : AppCompatActivity() {
         val animation = AnimationUtils.loadAnimation(this, R.anim.title)
         textView.startAnimation(animation)
 
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.v(ContentValues.TAG,"distrutto")
     }
 }
