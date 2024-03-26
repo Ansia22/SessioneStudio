@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="crang">
-        <item name="android:fontFamily">@font/crang</item>
+    <style name="royal">
+        <item name="android:fontFamily">@font/royal</item>
     </style>
 </resources>
