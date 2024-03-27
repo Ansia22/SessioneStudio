@@ -69,17 +69,22 @@
         tools:ignore="MissingConstraints" />
 
     <Button
+        android:id="@+id/login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="32dp"
         android:backgroundTint="@color/white"
-        android:text="Login"
-        android:textColor="#3B84F1"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="525dp"
         android:padding="18dp"
-        android:layout_marginTop="32dp"
-        android:textSize=""/>
-
+        android:text="Login"
+        android:textColor="#03A9F4"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_input"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
