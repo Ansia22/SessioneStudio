@@ -12,7 +12,7 @@ class LoginPage : AppCompatActivity() {
         setContentView(R.layout.activity_login_page)
     }
 
-    fun indietro(view: View){
+    fun tornaHome(view: View){
         val intent = Intent(this, home::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
