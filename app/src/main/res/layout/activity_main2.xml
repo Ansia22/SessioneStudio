@@ -15,7 +15,7 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:text="premi sullo schermo per continuare"
-        android:textColor="@android:color/black"
+        android:textColor="#696969"
         android:textSize="8pt"
         android:textStyle="bold"
         android:visibility="invisible"
