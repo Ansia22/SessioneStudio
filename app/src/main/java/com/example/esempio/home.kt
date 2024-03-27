@@ -19,6 +19,15 @@ class home : AppCompatActivity() {
         startActivity(intent)
     }
 
+
+    fun infoAlert(view: View){
+        AlertDialog.Builder(this)
+            .setMessage("ciao a tutti!")
+            .setCancelable(true)
+            .setPositiveButton("ok", null)
+            .show()
+    }
+
     override fun onBackPressed() {
         AlertDialog.Builder(this)
             .setMessage("Uscire da Sessione Studio?")
