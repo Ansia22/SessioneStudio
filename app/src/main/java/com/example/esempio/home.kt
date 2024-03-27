@@ -12,7 +12,13 @@ class home : AppCompatActivity() {
         setContentView(R.layout.activity_home)
     }
 
+    fun passaRicerca(view: View){
 
+        val intent = Intent(this, RicercaPage::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+
+    }
     fun passaLogin (view: View){
         val intent = Intent(this, LoginPage::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
