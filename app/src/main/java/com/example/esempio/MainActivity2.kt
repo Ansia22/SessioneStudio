@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -37,5 +38,15 @@ class MainActivity2 : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.v(ContentValues.TAG,"distrutto")
+    }
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setMessage("Uscire da Sessione Studio?")
+            .setCancelable(true)
+            .setPositiveButton("Ok") { _, _ ->
+                super.onBackPressed() // Chiusura solo dopo conferma
+            }
+            .setNegativeButton("Annulla", null)
+            .show()
     }
 }
