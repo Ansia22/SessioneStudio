@@ -1,20 +1,34 @@
 package com.example.esempio
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+
 
 class AdminPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_admin_page)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+    }
+    fun tornaLogin(view: View){
+        val intent = Intent(this, LoginPage::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        AlertDialog.Builder(this)
+            .setMessage("Sicuro di voler effettuare il logout?")
+            .setCancelable(true)
+            .setPositiveButton("Ok") { _, _ ->
+                val intent = Intent(this, LoginPage::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(intent)
+            }
+            .setNegativeButton("Annulla", null)
+            .show()
     }
 }
