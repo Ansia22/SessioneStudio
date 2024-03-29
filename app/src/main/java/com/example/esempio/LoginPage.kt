@@ -1,6 +1,7 @@
 package com.example.esempio
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -32,11 +33,14 @@ class LoginPage : AppCompatActivity() {
         if (username.isEmpty() || password.isEmpty()) {
             Toast.makeText(applicationContext, "Inserisci username e password", Toast.LENGTH_SHORT).show()
         } else if (username == "admin" && password == "admin") {
-            val intent = Intent(this, home::class.java)
+            val intent = Intent(this, AdminPage::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
+
         } else {
             Toast.makeText(applicationContext, "Credenziali non valide", Toast.LENGTH_SHORT).show()
+            passwordEditText.setText("")
+            passwordEditText.setHintTextColor(Color.RED)
         }
     }
 
