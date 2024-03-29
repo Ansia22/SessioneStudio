@@ -37,7 +37,7 @@
         android:layout_margin="32dp"
         android:background="@drawable/cornice_tonda"
         android:hint="Username"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
         android:padding="18dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
