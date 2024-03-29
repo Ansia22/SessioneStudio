@@ -3,7 +3,9 @@ package com.example.esempio
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+
 
 
 class LoginPage : AppCompatActivity() {
@@ -25,5 +27,13 @@ class LoginPage : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
+    }
+     fun passaAdminPage(){
+         EditText userEdit = findViewById<EditText>(R.id.username_input)
+         val password = findViewById<EditText>(R.id.password_input)
+         if(user  "admin" && password  "admin")
+         }
+
+
     }
 }
