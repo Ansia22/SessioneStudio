@@ -10,29 +10,29 @@
 
     <TextView
         android:id="@+id/zona"
-        android:layout_width="313dp"
-        android:layout_height="24dp"
+        android:layout_width="301dp"
+        android:layout_height="32dp"
         android:text="Zona"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.408"
+        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
+        app:layout_constraintVertical_bias="0.61" />
 
     <TextView
         android:id="@+id/materia"
-        android:layout_width="313dp"
-        android:layout_height="24dp"
+        android:layout_width="328dp"
+        android:layout_height="28dp"
         android:text="Materia"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.407" />
+        app:layout_constraintVertical_bias="0.445" />
 
     <TextView
         android:id="@+id/cognome"
@@ -42,10 +42,10 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
+        app:layout_constraintVertical_bias="0.212" />
 
     <ImageView
         android:id="@+id/back_arrow"
@@ -62,16 +62,16 @@
 
     <TextView
         android:id="@+id/nome"
-        android:layout_width="299dp"
-        android:layout_height="47dp"
+        android:layout_width="302dp"
+        android:layout_height="34dp"
         android:text="Nome (opzionale)"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.09" />
+        app:layout_constraintVertical_bias="0.109" />
 
     <EditText
         android:id="@+id/nome_input"
@@ -85,20 +85,19 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/cognome"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.361"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nome"
-        app:layout_constraintVertical_bias="0.681"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/cognome_input"
-        android:layout_width="308dp"
-        android:layout_height="53dp"
+        android:layout_width="314dp"
+        android:layout_height="61dp"
         android:layout_margin="32dp"
-        android:layout_marginBottom="16dp"
         android:drawableBottom="@drawable/segmento"
         android:hint="Cognome"
         android:inputType="textPersonName"
@@ -106,20 +105,19 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/materia"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.31"
+        app:layout_constraintHorizontal_bias="0.412"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cognome"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.328"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/materia_input"
-        android:layout_width="327dp"
-        android:layout_height="54dp"
+        android:layout_width="307dp"
+        android:layout_height="52dp"
         android:layout_margin="32dp"
-        android:layout_marginTop="12dp"
         android:drawableBottom="@drawable/segmento"
         android:hint="Materia"
         android:inputType="text"
@@ -127,11 +125,12 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/zona"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materia"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.535"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -148,10 +147,10 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintHorizontal_bias="0.383"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zona"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.741"
         tools:ignore="MissingConstraints" />
 
     <Button
