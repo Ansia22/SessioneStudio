@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1040316432376",
+    "firebase_url": "https://ripetizioniandroiod-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "ripetizioniandroiod",
+    "storage_bucket": "ripetizioniandroiod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040316432376:android:cd8031d3299a4318e9200d",
+        "android_client_info": {
+          "package_name": "com.example.esempio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnHLlA1SJMfDCiWIJ0YXj3sGSw0x-xd9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
