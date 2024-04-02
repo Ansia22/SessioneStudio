@@ -5,11 +5,19 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Firebase
+import com.google.firebase.database.database
 
 class home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        // Write a message to the database
+        val database = Firebase.database
+        val myRef = database.getReference("message")
+
+        myRef.setValue("Hello, World!")
     }
 
     fun passaRicerca(view: View){
