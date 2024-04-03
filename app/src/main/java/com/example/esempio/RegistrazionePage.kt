@@ -16,12 +16,12 @@ import com.google.firebase.auth.auth
 
 class RegistrazionePage : AppCompatActivity() {
 
-    private lateinit var auth:FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrazione_page)
         auth = Firebase.auth
-        }
+    }
 
     fun tornaHome(view: View){
         val intent = Intent(this, home::class.java)
@@ -49,8 +49,7 @@ class RegistrazionePage : AppCompatActivity() {
 
         }
         else{
-            createUser(email,passwordReg)
-
+            createUser(EmailAdressInput.text.toString(),PasswordInput.text.toString())
         }
 
     }
@@ -66,21 +65,12 @@ class RegistrazionePage : AppCompatActivity() {
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
 
-                }
-                else{
+                }else{
                     Log.d(TAG,"Errore nella creazione dell'utente")
-                    Toast.makeText(baseContext,"Utente NON registrato correttamente",
+                    Toast.makeText(baseContext,"Mail non valida o già utilizzata",
                         Toast.LENGTH_SHORT).show()
-                    finish()
-
                 }
 
             }
-         Log.d(TAG,"sono dentro")
-         Toast.makeText(baseContext,"sono dentro",
-             Toast.LENGTH_SHORT).show()
-
     }
-
-
 }
