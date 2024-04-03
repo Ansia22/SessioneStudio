@@ -31,12 +31,12 @@
         app:layout_constraintVertical_bias="0.536" />
 
     <EditText
-        android:id="@+id/username_input"
+        android:id="@+id/email_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:background="@drawable/cornice_tonda"
-        android:hint="Username"
+        android:hint="Email"
         android:inputType="textPersonName"
         android:padding="18dp"
         android:textColor="@color/black"
