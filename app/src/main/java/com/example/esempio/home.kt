@@ -12,12 +12,6 @@ class home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-        // Write a message to the database
-        val database = Firebase.database
-        val myRef = database.getReference("message")
-
-        myRef.setValue("Hello, World!")
     }
 
     fun passaRicerca(view: View){
@@ -29,6 +23,12 @@ class home : AppCompatActivity() {
     }
     fun passaLogin (view: View){
         val intent = Intent(this, LoginPage::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+
+    fun passaRegistrazione (view: View){
+        val intent = Intent(this, RegistrazionePage::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
