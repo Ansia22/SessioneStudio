@@ -66,6 +66,7 @@
         android:id="@+id/testoRegistra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="passaRegistrazione"
         android:text="Registrati"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
