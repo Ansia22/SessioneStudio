@@ -54,7 +54,7 @@ class RegistrazionePage : AppCompatActivity() {
         }
 
     }
-    private fun createUser(email:String,passwordReg:String){
+     fun createUser(email:String,passwordReg:String){
         auth.createUserWithEmailAndPassword(email,passwordReg)
             .addOnCompleteListener(this){task->
                 if(task.isSuccessful){
@@ -74,7 +74,11 @@ class RegistrazionePage : AppCompatActivity() {
                     finish()
 
                 }
+
             }
+         Log.d(TAG,"sono dentro")
+         Toast.makeText(baseContext,"sono dentro",
+             Toast.LENGTH_SHORT).show()
 
     }
 
