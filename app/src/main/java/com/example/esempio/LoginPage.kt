@@ -24,15 +24,15 @@ class LoginPage : AppCompatActivity() {
     }
 
     fun passaAdminPage(view: View){
-        val usernameEditText = findViewById<EditText>(R.id.username_input)
+        val EmailEditText = findViewById<EditText>(R.id.email_input)
         val passwordEditText = findViewById<EditText>(R.id.password_input)
 
-        val username = usernameEditText.text.toString()
+        val email = EmailEditText.text.toString()
         val password = passwordEditText.text.toString()
 
-        if (username.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(applicationContext, "Inserisci username e password", Toast.LENGTH_SHORT).show()
-        } else if (username == "admin" && password == "admin") {
+        } else if (email == "admin" && password == "admin") {
             val intent = Intent(this, AdminPage::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
