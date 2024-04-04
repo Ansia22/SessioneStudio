@@ -61,7 +61,7 @@ class RegistrazionePage : AppCompatActivity() {
                     Toast.makeText(baseContext,"Utente registrato correttamente",
                         Toast.LENGTH_SHORT).show()
 
-                        val intent = Intent(this, home::class.java)
+                        val intent = Intent(this, ProfiloPage::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
 
