@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.Firebase
-import com.google.firebase.database.database
 
 class home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
