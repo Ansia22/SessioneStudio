@@ -9,15 +9,11 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-<<<<<<< HEAD
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-=======
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 
->>>>>>> 4d46fced0ff067a97e8423c0b93beb65b7649b54
+
 
 
 class LoginPage : AppCompatActivity() {
@@ -57,6 +53,7 @@ class LoginPage : AppCompatActivity() {
                         Log.d(TAG,"Login eseguito correttamente")
                         Toast.makeText(applicationContext, "Login eseguito correttamente", Toast.LENGTH_SHORT).show()
 
+                        passwordEditText.setText("")
                         val intent = Intent(this, ProfiloPage::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
