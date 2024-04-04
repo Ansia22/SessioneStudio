@@ -9,9 +9,15 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+<<<<<<< HEAD
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+=======
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+
+>>>>>>> 4d46fced0ff067a97e8423c0b93beb65b7649b54
 
 
 class LoginPage : AppCompatActivity() {
