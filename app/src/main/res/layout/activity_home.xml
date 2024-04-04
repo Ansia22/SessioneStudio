@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="passaLogin"
-        android:text="ACCEDI COME INSEGNANTE"
+        android:text="ACCEDI"
         app:layout_constraintBottom_toTopOf="@+id/cercaButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
