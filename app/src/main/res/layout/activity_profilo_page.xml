@@ -21,4 +21,15 @@
         app:srcCompat="@drawable/back_arrow"
         android:onClick="tornaLogin" />
 
+    <Button
+        android:id="@+id/passaInfornazini"
+        android:layout_width="265dp"
+        android:layout_height="47dp"
+        android:text="Modifica Informazioni personali"
+        android:onClick="passaInformazioniProfessore"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
