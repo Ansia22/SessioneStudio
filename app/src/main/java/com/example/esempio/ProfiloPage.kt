@@ -3,8 +3,10 @@ package com.example.esempio
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.esempio.models.Professor
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -17,6 +19,10 @@ class ProfiloPage : AppCompatActivity() {
         setContentView(R.layout.activity_profilo_page)
 
         auth = Firebase.auth
+
+        val textId = findViewById<TextView>(R.id.textIdUtente)
+        val idProf = Professor.getIdProf()
+        textId.text= "Il tuo id:  $idProf"
     }
 
     fun tornaLogin(view: View){
@@ -51,4 +57,5 @@ class ProfiloPage : AppCompatActivity() {
             .setNegativeButton("Annulla", null)
             .show()
     }
+
 }
