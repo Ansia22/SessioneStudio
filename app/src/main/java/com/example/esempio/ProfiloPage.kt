@@ -24,7 +24,6 @@ class ProfiloPage : AppCompatActivity() {
         val idProf = Professor.getIdProf()
         textId.text= "Il tuo id:  $idProf"
     }
-
     fun tornaLogin(view: View){
         AlertDialog.Builder(this)
             .setMessage("Effettuare il logout?")
