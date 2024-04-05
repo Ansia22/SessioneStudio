@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.esempio.models.Professor
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -18,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase
 class RegistrazionePage : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var firebaseRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,7 +81,25 @@ class RegistrazionePage : AppCompatActivity() {
 
     fun saveData(){
 
-        firebaseRef = FirebaseDatabase.getInstance().getReference().child("professori")
+        val database = FirebaseDatabase.getInstance()
+        val professorsRef = database.getReference("Professori")
+
+        val newProfessorRef = professorsRef.push()
+        val professorId = newProfessorRef.key!!
+        val EmailAdressInput = findViewById<EditText>(R.id.EmailAddress)
+        val professorEmail = EmailAdressInput.text.toString()
+
+        val professorNome = ""
+        val professorCognome = ""
+        val professorMaterie = ""
+        val professorIndirizzo = ""
+        val professorDescrizione = ""
+
+        val professor = Professor(professorId,professorEmail, professorNome, professorCognome, professorMaterie, professorIndirizzo, professorDescrizione)
+
+        Professor.setVariabili(professorId)
+
+        professorsRef.child(professorId).setValue(professor)
 
     }
 }
