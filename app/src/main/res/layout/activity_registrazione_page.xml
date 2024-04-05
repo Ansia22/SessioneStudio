@@ -69,6 +69,8 @@
         android:layout_height="wrap_content"
         android:onClick="RegistraUtente"
         android:text="Registrati"
+        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
