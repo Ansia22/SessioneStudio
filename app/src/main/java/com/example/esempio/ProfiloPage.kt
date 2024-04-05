@@ -34,13 +34,18 @@ class ProfiloPage : AppCompatActivity() {
             .show()
     }
 
+    fun passaInformazioniProfessore(view: View){
+        val intent = Intent(this, InformazioniProfessore::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+
     override fun onBackPressed() {
         AlertDialog.Builder(this)
             .setMessage("Effettuare il logout?")
             .setCancelable(true)
             .setPositiveButton("Ok") { _, _ ->
                 super.onBackPressed()
-
                 auth.signOut()
             }
             .setNegativeButton("Annulla", null)
