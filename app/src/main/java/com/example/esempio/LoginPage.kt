@@ -53,6 +53,8 @@ class LoginPage : AppCompatActivity() {
                         Log.d(TAG,"Login eseguito correttamente")
                         Toast.makeText(applicationContext, "Login eseguito correttamente", Toast.LENGTH_SHORT).show()
 
+                        //DOBBIAMO PRENDERE LA MAIL INSERITA DAL PROF, LA CERCO NEL DATABASE, ESTRAGGO L'ID CORRISPONDENTE E USO IL setVariabile PER IMPOSTARE L'ID
+
                         passwordEditText.setText("")
                         val intent = Intent(this, ProfiloPage::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
