@@ -11,11 +11,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class RegistrazionePage : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var firebaseRef: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrazione_page)
@@ -60,6 +64,8 @@ class RegistrazionePage : AppCompatActivity() {
                     Toast.makeText(baseContext,"Utente registrato correttamente",
                         Toast.LENGTH_SHORT).show()
 
+                        saveData()
+
                         val intent = Intent(this, ProfiloPage::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
@@ -71,5 +77,11 @@ class RegistrazionePage : AppCompatActivity() {
                 }
 
             }
+    }
+
+    fun saveData(){
+
+        firebaseRef = FirebaseDatabase.getInstance().getReference().child("professori")
+
     }
 }
