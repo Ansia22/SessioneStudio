@@ -15,35 +15,23 @@ import com.google.firebase.database.ValueEventListener
 
 class home : AppCompatActivity() {
 
-    private lateinit var contactList: ArrayList<Professor>
     private lateinit var firebaseRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
         firebaseRef = FirebaseDatabase.getInstance().getReference("Professori")
-        contactList = arrayListOf()
-
         fetchData()
-
     }
 
     private fun fetchData() {
         firebaseRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                contactList.clear()
-                if(snapshot.exists()){
-                    for(contactSnap in snapshot.children){
-                        val contacts = contactSnap.getValue(Professor::class.java)
-                        contactList.add(contacts!!)
-                    }
-                }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(applicationContext,"error $error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"errore: $error", Toast.LENGTH_SHORT).show()
             }
 
         })
