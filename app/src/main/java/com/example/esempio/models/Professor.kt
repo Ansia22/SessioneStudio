@@ -9,6 +9,8 @@ data class Professor(
     val indirizzo: String,
     val descrizione: String
 ){
+
+    constructor() : this("", "", "", "","","","")
     companion object {
         private lateinit var idProf: String
 
