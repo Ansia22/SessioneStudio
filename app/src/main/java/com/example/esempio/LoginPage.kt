@@ -87,7 +87,7 @@ class LoginPage : AppCompatActivity() {
                         Toast.makeText(applicationContext, "dentro for$email", Toast.LENGTH_SHORT).show()
                         try {
                             val professor = snapshot.getValue(Professor::class.java)
-                            val professorId = professor?.id
+                            val professorId = professor!!.id
                             Toast.makeText(applicationContext, "dentro $professorId", Toast.LENGTH_SHORT).show()
 
                             if (professorId != null) {
