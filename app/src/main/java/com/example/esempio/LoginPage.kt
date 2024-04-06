@@ -76,7 +76,7 @@ class LoginPage : AppCompatActivity() {
 
     }
 
-    fun getProfessorIdByEmail(email: String) {
+    private fun getProfessorIdByEmail(email: String) {
         firebaseRef = FirebaseDatabase.getInstance().getReference("Professori")
 
         firebaseRef.orderByChild("email").equalTo(email)
