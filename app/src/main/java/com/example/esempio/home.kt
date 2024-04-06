@@ -1,52 +1,53 @@
 package com.example.esempio
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.esempio.models.Professor
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class home : AppCompatActivity() {
 
-    private var database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    private lateinit var contactList: ArrayList<Professor>
+    private lateinit var firebaseRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val prova = findViewById<TextView>(R.id.prova)
-        leggidb(prova)
+
+        firebaseRef = FirebaseDatabase.getInstance().getReference("Professori")
+        contactList = arrayListOf()
+
+        fetchData()
+
     }
 
-
-    fun leggidb(prova: TextView){
-
-        val myRef = database.reference.child("Professori")
-
-        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Toast.makeText(applicationContext, "dentro prima prof", Toast.LENGTH_SHORT).show()
-                val value = dataSnapshot.getValue(String::class.java)
-                Toast.makeText(applicationContext, "dentro dopo prof", Toast.LENGTH_SHORT).show()
-                val idprof = value
-                prova.text = "ecco $idprof"
+    private fun fetchData() {
+        firebaseRef.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                contactList.clear()
+                if(snapshot.exists()){
+                    for(contactSnap in snapshot.children){
+                        val contacts = contactSnap.getValue(Professor::class.java)
+                        contactList.add(contacts!!)
+                    }
+                }
             }
+
             override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
+                Toast.makeText(applicationContext,"error $error", Toast.LENGTH_SHORT).show()
             }
+
         })
-
-
     }
-
 
 
     fun passaRicerca(view: View){
