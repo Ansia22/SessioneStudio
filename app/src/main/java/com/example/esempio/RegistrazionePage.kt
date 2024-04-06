@@ -1,9 +1,7 @@
 package com.example.esempio
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -12,7 +10,6 @@ import com.example.esempio.models.Professor
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 
@@ -45,13 +42,13 @@ class RegistrazionePage : AppCompatActivity() {
         if (email.isEmpty() || passwordReg.isEmpty() || passwordRegRip.isEmpty()) {
             Toast.makeText(applicationContext, "Inserisci tutti i dati richiesti", Toast.LENGTH_SHORT)
                 .show()
-        }
-        else if(passwordReg != passwordRegRip){
+        }else if(passwordReg != passwordRegRip){
             Toast.makeText(applicationContext, "Le password inserite non coincidono", Toast.LENGTH_SHORT)
                 .show()
 
-        }
-        else{
+        }else if(passwordReg.length<6){
+            Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
+        }else{
             createUser(EmailAdressInput.text.toString(),PasswordInput.text.toString())
         }
 
@@ -60,7 +57,6 @@ class RegistrazionePage : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email,passwordReg)
             .addOnCompleteListener(this){task->
                 if(task.isSuccessful){
-                    Log.d(TAG,"Utente creato correttamente")
                     Toast.makeText(baseContext,"Utente registrato correttamente",
                         Toast.LENGTH_SHORT).show()
 
@@ -71,7 +67,6 @@ class RegistrazionePage : AppCompatActivity() {
                         startActivity(intent)
 
                 }else{
-                    Log.d(TAG,"Errore nella creazione dell'utente")
                     Toast.makeText(baseContext,"Mail non valida o già utilizzata",
                         Toast.LENGTH_SHORT).show()
                 }
