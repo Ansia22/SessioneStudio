@@ -1,10 +1,8 @@
 package com.example.esempio
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -45,7 +43,9 @@ class LoginPage : AppCompatActivity() {
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(applicationContext, "Inserisci username e password", Toast.LENGTH_SHORT).show()
-        } else if (email == "admin" && password == "admin") {
+        }else if(password.length<6){
+            Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
+        }else if (email == "admin" && password == "admin") {
             val intent = Intent(this, AdminPage::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
@@ -54,7 +54,6 @@ class LoginPage : AppCompatActivity() {
             auth.signInWithEmailAndPassword(EmailEditText.text.toString(), passwordEditText.text.toString())
                 .addOnCompleteListener(this){task->
                     if(task.isSuccessful){
-                        Log.d(TAG,"Login eseguito correttamente")
                         Toast.makeText(applicationContext, "Login eseguito correttamente con $email", Toast.LENGTH_SHORT).show()
 
                         //DOBBIAMO PRENDERE LA MAIL INSERITA DAL PROF, LA CERCO NEL DATABASE, ESTRAGGO L'ID CORRISPONDENTE E USO IL setVariabile PER IMPOSTARE L'ID
