@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Esempio"
         tools:targetApi="31">
         <activity
+            android:name=".FeedbackPersonali"
+            android:exported="false" />
+        <activity
             android:name=".InformazioniProfessore"
             android:exported="false" />
         <activity
