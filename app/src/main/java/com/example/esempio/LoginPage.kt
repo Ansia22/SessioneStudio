@@ -44,12 +44,15 @@ class LoginPage : AppCompatActivity() {
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(applicationContext, "Inserisci username e password", Toast.LENGTH_SHORT).show()
-        }else if(password.length<6){
-            Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
+            
         }else if (email == "admin" && password == "admin") {
             val intent = Intent(this, AdminPage::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
+
+        }else if(password.length<6){
+            Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
+
 
         } else {
             auth.signInWithEmailAndPassword(EmailEditText.text.toString(), passwordEditText.text.toString())
