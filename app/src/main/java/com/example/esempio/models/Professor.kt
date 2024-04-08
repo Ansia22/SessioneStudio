@@ -7,7 +7,7 @@ data class Professor(
     val cognome: String,
     val materie: String,
     val indirizzo: String,
-    val descrizione: String
+    val orari: String
 ){
 
     constructor() : this("", "", "", "","","","")
