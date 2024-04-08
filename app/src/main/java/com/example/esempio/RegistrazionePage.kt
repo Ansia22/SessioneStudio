@@ -81,6 +81,7 @@ class RegistrazionePage : AppCompatActivity() {
 
         val newProfessorRef = professorsRef.push()
         val professorId = newProfessorRef.key!!
+
         val EmailAdressInput = findViewById<EditText>(R.id.EmailAddress)
         val professorEmail = EmailAdressInput.text.toString()
 
@@ -92,7 +93,7 @@ class RegistrazionePage : AppCompatActivity() {
 
         val professor = Professor(professorId,professorEmail, professorNome, professorCognome, professorMaterie, professorIndirizzo, professorDescrizione)
 
-        Professor.setVariabili(professorId)
+        Professor.setVariabili(professorId, professorEmail)
 
         professorsRef.child(professorId).setValue(professor)
 
