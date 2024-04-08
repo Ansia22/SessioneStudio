@@ -39,7 +39,7 @@
         android:id="@+id/passaFeedback"
         android:layout_width="265dp"
         android:layout_height="47dp"
-        android:onClick="passaInformazioniProfessore"
+        android:onClick="passaFeedback"
         android:text="I miei Feedback"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
