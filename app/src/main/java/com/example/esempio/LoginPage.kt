@@ -85,10 +85,10 @@ class LoginPage : AppCompatActivity() {
                     for (snap in snapshot.children) {
                         try {
                             val professor = snap.getValue(Professor::class.java)
-                            val professorId = professor!!.id
+                            val professorId = professor?.id
 
                             if (professorId != null) {
-                                Professor.setVariabili(professorId)
+                                Professor.setVariabili(professorId, email)
                             }
                         } catch (e: Exception) {
                             // Gestisci eventuali eccezioni durante il recupero dei dati del professore
