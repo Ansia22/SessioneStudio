@@ -55,10 +55,10 @@ class InformazioniProfessore : AppCompatActivity() {
                             val cognome = professor?.cognome
                             val materie = professor?.materie
                             val indirizzo = professor?.indirizzo
-                            val descrizione = professor?.descrizione
+                            val orari = professor?.orari
 
-                            if (nome != null && cognome != null && materie != null && indirizzo != null && descrizione != null) {
-                                setDati(nome,cognome,materie,indirizzo,descrizione)
+                            if (nome != null && cognome != null && materie != null && indirizzo != null && orari != null) {
+                                setDati(nome,cognome,materie,indirizzo,orari)
                             }
 
 
@@ -77,19 +77,19 @@ class InformazioniProfessore : AppCompatActivity() {
                 }
             })
     }
-    private fun setDati(nome:String,cognome:String,materie:String,indirizzo:String,descrizione:String){
+    private fun setDati(nome:String,cognome:String,materie:String,indirizzo:String,orari:String){
 
         val nomeText = findViewById<EditText>(R.id.nome)
         val cognomeText = findViewById<EditText>(R.id.cognome)
         val materieText = findViewById<EditText>(R.id.materie)
         val indirizzoText = findViewById<EditText>(R.id.indirizzo)
-        val descrizioneText = findViewById<EditText>(R.id.descrizione)
+        val orariText = findViewById<EditText>(R.id.orari)
 
         nomeText.setText("$nome")
         cognomeText.setText("$cognome")
         materieText.setText("$materie")
         indirizzoText.setText("$indirizzo")
-        descrizioneText.setText("$descrizione")
+        orariText.setText("$orari")
 
     }
 
@@ -100,16 +100,25 @@ class InformazioniProfessore : AppCompatActivity() {
         val cognomeText = findViewById<EditText>(R.id.cognome)
         val materieText = findViewById<EditText>(R.id.materie)
         val indirizzoText = findViewById<EditText>(R.id.indirizzo)
-        val descrizioneText = findViewById<EditText>(R.id.descrizione)
+        val orariText = findViewById<EditText>(R.id.orari)
 
         val newNome = nomeText.text.toString()
         val newCognome = cognomeText.text.toString()
         val newMaterie = materieText.text.toString()
         val newIndirizzo = indirizzoText.text.toString()
-        val newDescrizione = descrizioneText.text.toString()
+        val newOrari = orariText.text.toString()
 
         val professorId = Professor.getIdProf()
-        val updateprofessor = Professor(professorId,)
+        val professorMail = Professor.getEmailProf()
+        val updateprofessor = Professor(professorId,professorMail,newNome,newCognome,newMaterie,newIndirizzo,newOrari)
+
+        val professorRef = firebaseRef.child(professorId)
+        professorRef.setValue(updateprofessor)
+            .addOnSuccessListener { Toast.makeText(applicationContext, "dati salvati con successo", Toast.LENGTH_SHORT).show() }
+
+            .addOnFailureListener { Toast.makeText(applicationContext, "errore nel salvattaggio dei dati", Toast.LENGTH_SHORT).show()}
+
+
 
 
 
