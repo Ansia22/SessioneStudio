@@ -13,12 +13,17 @@ data class Professor(
     constructor() : this("", "", "", "","","","")
     companion object {
         private lateinit var idProf: String
+        private lateinit var emailProf: String
 
-        fun setVariabili(idInput: String) {
+        fun setVariabili(idInput: String, emailInput: String) {
             idProf = idInput
+            emailProf = emailInput
         }
         fun getIdProf(): String {
             return idProf
+        }
+        fun getEmailProf(): String {
+            return emailProf
         }
     }
 }
