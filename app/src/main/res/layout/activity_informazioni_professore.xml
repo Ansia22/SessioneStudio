@@ -78,11 +78,11 @@
         app:layout_constraintVertical_bias="0.523" />
 
     <EditText
-        android:id="@+id/descrizione"
+        android:id="@+id/orari"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Descrizione"
+        android:hint="Orari"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,5 +102,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.83" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
