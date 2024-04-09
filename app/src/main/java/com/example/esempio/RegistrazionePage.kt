@@ -24,20 +24,20 @@ class RegistrazionePage : AppCompatActivity() {
     }
 
     fun tornaHome(view: View){
-        val intent = Intent(this, home::class.java)
+        val intent = Intent(this, Home::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
     fun RegistraUtente(view: View){
 
-        val EmailAdressInput = findViewById<EditText>(R.id.EmailAddress)
-        val PasswordInput = findViewById<EditText>(R.id.Password)
-        val PasswordRipetutaInput = findViewById<EditText>(R.id.PasswordRipetuta)
+        val emailAdressInput = findViewById<EditText>(R.id.EmailAddress)
+        val passwordInput = findViewById<EditText>(R.id.Password)
+        val passwordRipetutaInput = findViewById<EditText>(R.id.PasswordRipetuta)
 
-        val email = EmailAdressInput.text.toString()
-        val passwordReg = PasswordInput.text.toString()
-        val passwordRegRip = PasswordRipetutaInput.text.toString()
+        val email = emailAdressInput.text.toString()
+        val passwordReg = passwordInput.text.toString()
+        val passwordRegRip = passwordRipetutaInput.text.toString()
 
         if (email.isEmpty() || passwordReg.isEmpty() || passwordRegRip.isEmpty()) {
             Toast.makeText(applicationContext, "Inserisci tutti i dati richiesti", Toast.LENGTH_SHORT)
@@ -49,11 +49,11 @@ class RegistrazionePage : AppCompatActivity() {
         }else if(passwordReg.length<6){
             Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
         }else{
-            createUser(EmailAdressInput.text.toString(),PasswordInput.text.toString())
+            createUser(emailAdressInput.text.toString(),passwordInput.text.toString())
         }
 
     }
-     fun createUser(email:String,passwordReg:String){
+     private fun createUser(email:String, passwordReg:String){
         auth.createUserWithEmailAndPassword(email,passwordReg)
             .addOnCompleteListener(this){task->
                 if(task.isSuccessful){
@@ -74,7 +74,7 @@ class RegistrazionePage : AppCompatActivity() {
             }
     }
 
-    fun saveData(){
+    private fun saveData(){
 
         val database = FirebaseDatabase.getInstance()
         val professorsRef = database.getReference("Professori")
@@ -82,8 +82,8 @@ class RegistrazionePage : AppCompatActivity() {
         val newProfessorRef = professorsRef.push()
         val professorId = newProfessorRef.key!!
 
-        val EmailAdressInput = findViewById<EditText>(R.id.EmailAddress)
-        val professorEmail = EmailAdressInput.text.toString()
+        val emailAdressInput = findViewById<EditText>(R.id.EmailAddress)
+        val professorEmail = emailAdressInput.text.toString()
 
         val professorNome = ""
         val professorCognome = ""
