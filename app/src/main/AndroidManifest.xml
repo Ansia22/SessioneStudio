@@ -40,13 +40,13 @@
             android:name=".LoginPage"
             android:exported="false" />
         <activity
-            android:name=".home"
+            android:name=".Home"
             android:exported="false" />
         <activity
-            android:name=".main"
+            android:name=".Main"
             android:exported="false" />
         <activity
-            android:name=".caricamento"
+            android:name=".Caricamento"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
