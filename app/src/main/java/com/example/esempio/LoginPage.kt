@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.esempio.models.Professor
 import com.google.firebase.Firebase
@@ -16,6 +17,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.net.UnknownHostException
 
 
 class LoginPage : AppCompatActivity() {
@@ -36,6 +38,7 @@ class LoginPage : AppCompatActivity() {
     }
 
     fun passaProfiloPage(view: View){
+        
         val EmailEditText = findViewById<EditText>(R.id.email_input)
         val passwordEditText = findViewById<EditText>(R.id.password_input)
 
@@ -72,9 +75,7 @@ class LoginPage : AppCompatActivity() {
                         passwordEditText.setHintTextColor(Color.RED)
                     }
                 }
-
         }
-
     }
 
     private fun getProfessorIdByEmail(email: String) {
