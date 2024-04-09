@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.esempio.models.Professor
 import com.google.firebase.Firebase
@@ -17,7 +16,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import java.net.UnknownHostException
 
 
 class LoginPage : AppCompatActivity() {
@@ -31,7 +29,7 @@ class LoginPage : AppCompatActivity() {
     }
 
     fun tornaHome(view: View){
-        val intent = Intent(this, home::class.java)
+        val intent = Intent(this, Home::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
@@ -39,10 +37,10 @@ class LoginPage : AppCompatActivity() {
 
     fun passaProfiloPage(view: View){
         
-        val EmailEditText = findViewById<EditText>(R.id.email_input)
+        val emailEditText = findViewById<EditText>(R.id.email_input)
         val passwordEditText = findViewById<EditText>(R.id.password_input)
 
-        val email = EmailEditText.text.toString()
+        val email = emailEditText.text.toString()
         val password = passwordEditText.text.toString()
 
         if (email.isEmpty() || password.isEmpty()) {
@@ -58,7 +56,7 @@ class LoginPage : AppCompatActivity() {
 
 
         } else {
-            auth.signInWithEmailAndPassword(EmailEditText.text.toString(), passwordEditText.text.toString())
+            auth.signInWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
                 .addOnCompleteListener(this){task->
                     if(task.isSuccessful){
                         Toast.makeText(applicationContext, "Login eseguito correttamente con $email", Toast.LENGTH_SHORT).show()
@@ -110,7 +108,7 @@ class LoginPage : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val intent = Intent(this, home::class.java)
+        val intent = Intent(this, Home::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
