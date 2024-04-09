@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlin.math.abs
 
 
 class RisultatoRicerca : AppCompatActivity() {
@@ -83,7 +84,7 @@ class RisultatoRicerca : AppCompatActivity() {
             return false
         }else {
             var i = 0
-            while (i <= Math.abs(stringaDatabase.length - parola.length)) {
+            while (i <= abs(stringaDatabase.length - parola.length)) {
 
                 val stringaDaConfrontare = stringaDatabase.substring(i, parola.length + i)
 
