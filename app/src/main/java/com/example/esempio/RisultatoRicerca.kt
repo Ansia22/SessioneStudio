@@ -49,9 +49,10 @@ class RisultatoRicerca : AppCompatActivity() {
 
                             if(professorNome != null && Contains(nomeIn,professorNome) &&
                                 professorCognome != null && Contains(cognomeIn,professorCognome) &&
-                                professorMateria != null && Contains(nomeIn,professorMateria) &&
-                                professorIndirizzo != null && Contains(nomeIn,professorIndirizzo)){
-                                //INSERIRE QUI IL METODO PER FAR VEDERE ALL'UTENTE I RISULTATI DELLA RICERCA
+                                professorMateria != null && Contains(materiaIn,professorMateria) &&
+                                professorIndirizzo != null && Contains(indirizzoIn,professorIndirizzo)){
+                                //INSERIRE QUI IL METODO PER FAR VEDERE ALL'UTENTE I RISULTATI DELLA RICERCA(RIMUOVERE IL TOAST ALLA FINE)
+                                Toast.makeText(applicationContext, "$professorNome, $professorIndirizzo", Toast.LENGTH_SHORT).show()
                             }
 
 
@@ -78,17 +79,21 @@ class RisultatoRicerca : AppCompatActivity() {
 
     }
     private fun Contains(parola:String, stringaDatabase:String): Boolean {
-        var i = 0
-        while(i <= Math.abs(stringaDatabase.length - parola.length)){
+        if(stringaDatabase.length < parola.length){
+            return false
+        }else {
+            var i = 0
+            while (i <= Math.abs(stringaDatabase.length - parola.length)) {
 
-            val stringaDaConfrontare= stringaDatabase.substring(i,parola.length+i)
+                val stringaDaConfrontare = stringaDatabase.substring(i, parola.length + i)
 
-            if (parola == stringaDaConfrontare){
-                return true
+                if (parola == stringaDaConfrontare) {
+                    return true
+                }
+                i++
             }
-            i++
+            return false
         }
-        return false
     }
 
 
