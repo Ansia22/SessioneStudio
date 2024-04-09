@@ -60,8 +60,6 @@ class LoginPage : AppCompatActivity() {
                     if(task.isSuccessful){
                         Toast.makeText(applicationContext, "Login eseguito correttamente con $email", Toast.LENGTH_SHORT).show()
 
-                        //DOBBIAMO PRENDERE LA MAIL INSERITA DAL PROF, LA CERCO NEL DATABASE, ESTRAGGO L'ID CORRISPONDENTE E USO IL setVariabile PER IMPOSTARE L'ID
-
                         getProfessorIdByEmail(email)
 
                         passwordEditText.setText("")
@@ -91,7 +89,7 @@ class LoginPage : AppCompatActivity() {
                             val professorId = professor?.id
 
                             if (professorId != null) {
-                                Professor.setVariabili(professorId, email)
+                                Professor.setVariabiliLogin(professorId, email)
                             }
                         } catch (e: Exception) {
                             // Gestisci eventuali eccezioni durante il recupero dei dati del professore
