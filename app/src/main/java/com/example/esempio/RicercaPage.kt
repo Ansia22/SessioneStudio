@@ -15,7 +15,7 @@ class RicercaPage : AppCompatActivity() {
     }
 
     fun tornaHome(view: View){
-        val intent = Intent(this, home::class.java)
+        val intent = Intent(this, Home::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
@@ -40,7 +40,7 @@ class RicercaPage : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val intent = Intent(this, home::class.java)
+        val intent = Intent(this, Home::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
