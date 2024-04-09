@@ -8,44 +8,9 @@
     android:background="@drawable/background_image"
     tools:context=".RicercaPage">
 
-    <TextView
-        android:id="@+id/zona"
-        android:layout_width="301dp"
-        android:layout_height="32dp"
-        android:text="Zona"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.445"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.61" />
 
-    <TextView
-        android:id="@+id/materia"
-        android:layout_width="328dp"
-        android:layout_height="28dp"
-        android:text="Materia"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.445" />
 
-    <TextView
-        android:id="@+id/cognome"
-        android:layout_width="308dp"
-        android:layout_height="36dp"
-        android:text="Cognome (opzionale)"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.436"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.212" />
+
 
     <ImageView
         android:id="@+id/back_arrow"
@@ -60,18 +25,6 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/back_arrow" />
 
-    <TextView
-        android:id="@+id/nome"
-        android:layout_width="302dp"
-        android:layout_height="34dp"
-        android:text="Nome (opzionale)"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.44"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109" />
 
     <EditText
         android:id="@+id/nome_input"
@@ -79,7 +32,7 @@
         android:layout_height="50dp"
         android:layout_margin="32dp"
         android:drawableBottom="@drawable/segmento"
-        android:hint="Nome"
+        android:hint="Nome(opzionale)"
         android:inputType="textPersonName"
         android:padding="18dp"
         android:textColor="@color/black"
@@ -87,10 +40,10 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135"
+        app:layout_constraintVertical_bias="0.186"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -99,7 +52,7 @@
         android:layout_height="61dp"
         android:layout_margin="32dp"
         android:drawableBottom="@drawable/segmento"
-        android:hint="Cognome"
+        android:hint="Cognome(opzionale)"
         android:inputType="textPersonName"
         android:padding="18dp"
         android:textColor="@color/black"
@@ -107,10 +60,10 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328"
+        app:layout_constraintVertical_bias="0.391"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -127,19 +80,19 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.535"
+        app:layout_constraintVertical_bias="0.625"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/zona_input"
+        android:id="@+id/indirizzo_input"
         android:layout_width="312dp"
         android:layout_height="53dp"
         android:layout_margin="32dp"
         android:drawableBottom="@drawable/segmento"
-        android:hint="Zona"
+        android:hint="Indirizzo"
         android:inputType="text"
         android:padding="18dp"
         android:textColor="@color/black"
@@ -147,10 +100,10 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.383"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.741"
+        app:layout_constraintVertical_bias="0.867"
         tools:ignore="MissingConstraints" />
 
     <Button
