@@ -7,7 +7,7 @@ import android.os.Handler
 import android.content.Intent
 import android.util.Log
 
-class caricamento : AppCompatActivity() {
+class Caricamento : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,7 +15,7 @@ class caricamento : AppCompatActivity() {
         val DELAY_TIME = 3000
         val handler = Handler()
         handler.postDelayed({
-            val intent = Intent(this@caricamento, main::class.java)
+            val intent = Intent(this@Caricamento, Main::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
