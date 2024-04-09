@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.esempio.models.Professor
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -85,11 +82,11 @@ class InformazioniProfessore : AppCompatActivity() {
         val indirizzoText = findViewById<EditText>(R.id.indirizzo)
         val orariText = findViewById<EditText>(R.id.orari)
 
-        nomeText.setText("$nome")
-        cognomeText.setText("$cognome")
-        materieText.setText("$materie")
-        indirizzoText.setText("$indirizzo")
-        orariText.setText("$orari")
+        nomeText.setText(nome)
+        cognomeText.setText(cognome)
+        materieText.setText(materie)
+        indirizzoText.setText(indirizzo)
+        orariText.setText(orari)
 
     }
 
