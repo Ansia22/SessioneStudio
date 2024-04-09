@@ -93,7 +93,7 @@ class RegistrazionePage : AppCompatActivity() {
 
         val professor = Professor(professorId,professorEmail, professorNome, professorCognome, professorMaterie, professorIndirizzo, professorDescrizione)
 
-        Professor.setVariabili(professorId, professorEmail)
+        Professor.setVariabiliLogin(professorId, professorEmail)
 
         professorsRef.child(professorId).setValue(professor)
 
