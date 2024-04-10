@@ -46,23 +46,24 @@ class RisultatoRicerca : AppCompatActivity() {
         firebaseRef.orderByChild("id")
             .addValueEventListener(object:ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+
                     datiProf.clear()
+
                     for (snap in snapshot.children) {
                         try {
                             val professor = snap.getValue(Professor::class.java)
-                            val professorNome = professor?.nome?.toLowerCase()
-                            val professorCognome = professor?.cognome?.toLowerCase()
-                            val professorMateria = professor?.materie?.toLowerCase()
-                            val professorIndirizzo = professor?.indirizzo?.toLowerCase()
+                            val professorNome = professor?.nome
+                            val professorCognome = professor?.cognome
+                            val professorMateria = professor?.materie
+                            val professorIndirizzo = professor?.indirizzo
 
-                            if(professorNome != null && Contains(nomeIn,professorNome) &&
-                                professorCognome != null && Contains(cognomeIn,professorCognome) &&
-                                professorMateria != null && Contains(materiaIn,professorMateria) &&
-                                professorIndirizzo != null && Contains(indirizzoIn,professorIndirizzo)){
+                            if(professorNome != null && Contains(nomeIn,professorNome.toLowerCase()) &&
+                                professorCognome != null && Contains(cognomeIn,professorCognome.toLowerCase()) &&
+                                professorMateria != null && Contains(materiaIn,professorMateria.toLowerCase()) &&
+                                professorIndirizzo != null && Contains(indirizzoIn,professorIndirizzo.toLowerCase())){
 
                                 datiProf.add("$professorCognome $professorNome")
                             }
-
 
                         } catch (e: Exception) {
                             // Gestisci eventuali eccezioni durante il recupero dei dati del professore
