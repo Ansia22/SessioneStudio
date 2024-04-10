@@ -62,7 +62,7 @@ class RegistrazionePage : AppCompatActivity() {
 
                         saveData()
 
-                        val intent = Intent(this, ProfiloPage::class.java)
+                        val intent = Intent(this, InformazioniProfessore::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
 
