@@ -23,13 +23,16 @@ data class Professor(
             idProf = idInput
             emailProf = emailInput
         }
-        fun setVariabiliRicerca(nomeInput:String,cognomeInput:String,materiaInput:String,indirizzoInput:String,){
+        fun setId(idInput: String) {
+            idProf = idInput
+        }
+        fun setVariabiliRicerca(nomeInput:String,cognomeInput:String,materiaInput:String,indirizzoInput:String){
             nomeProf = nomeInput
             cognomeProf =cognomeInput
             materiaProf = materiaInput
             indirizzoProf = indirizzoInput
-
         }
+
         fun getIdProf(): String {
             return idProf
 
