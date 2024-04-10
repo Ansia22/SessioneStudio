@@ -21,12 +21,15 @@ class RisultatoRicerca : AppCompatActivity() {
 
     private lateinit var firebaseRef: DatabaseReference
     private lateinit var datiProf : ArrayList<String>
+    private lateinit var idProf : ArrayList<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_risultato_ricerca)
 
         cercaProf()
         datiProf = arrayListOf()
+        idProf = arrayListOf()
 
     }
     fun tornaRicerca(view: View){
@@ -56,13 +59,16 @@ class RisultatoRicerca : AppCompatActivity() {
                             val professorCognome = professor?.cognome
                             val professorMateria = professor?.materie
                             val professorIndirizzo = professor?.indirizzo
+                            val professorId = professor?.id
 
-                            if(professorNome != null && Contains(nomeIn,professorNome.toLowerCase()) &&
+                            if(professorId != null && professorNome != null && Contains(nomeIn,professorNome.toLowerCase()) &&
                                 professorCognome != null && Contains(cognomeIn,professorCognome.toLowerCase()) &&
                                 professorMateria != null && Contains(materiaIn,professorMateria.toLowerCase()) &&
                                 professorIndirizzo != null && Contains(indirizzoIn,professorIndirizzo.toLowerCase())){
 
                                 datiProf.add("$professorCognome $professorNome")
+                                idProf.add(professorId)
+
                             }
 
                         } catch (e: Exception) {
@@ -86,11 +92,17 @@ class RisultatoRicerca : AppCompatActivity() {
         val arrayAdapter : ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_list_item_1, datiProf)
         listView.adapter = arrayAdapter
         listView.setOnItemClickListener{adapterView, view, i, l->
-            Toast.makeText(this, "item selected " + datiProf[i], Toast.LENGTH_LONG).show()
+            passaProfessoreSelezionato()
+            Professor.setId(idProf[i])
         }
     }
 
 
+    private fun passaProfessoreSelezionato(){
+        val intent = Intent(this, ProfessoreSelezionato::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
     private fun Contains(parola:String, stringaDatabase:String): Boolean {
         if(stringaDatabase.length < parola.length){
             return false
@@ -109,5 +121,12 @@ class RisultatoRicerca : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, RicercaPage::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+    }
 
 }
