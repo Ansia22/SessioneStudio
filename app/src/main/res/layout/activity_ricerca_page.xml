@@ -28,9 +28,9 @@
 
     <EditText
         android:id="@+id/nome_input"
-        android:layout_width="306dp"
-        android:layout_height="50dp"
-        android:layout_margin="32dp"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_margin="30dp"
         android:drawableBottom="@drawable/segmento"
         android:hint="Nome(opzionale)"
         android:inputType="textPersonName"
@@ -48,9 +48,9 @@
 
     <EditText
         android:id="@+id/cognome_input"
-        android:layout_width="314dp"
-        android:layout_height="61dp"
-        android:layout_margin="32dp"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_margin="30dp"
         android:drawableBottom="@drawable/segmento"
         android:hint="Cognome(opzionale)"
         android:inputType="textPersonName"
@@ -68,9 +68,9 @@
 
     <EditText
         android:id="@+id/materia_input"
-        android:layout_width="307dp"
-        android:layout_height="52dp"
-        android:layout_margin="32dp"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_margin="30dp"
         android:drawableBottom="@drawable/segmento"
         android:hint="Materia"
         android:inputType="text"
@@ -88,9 +88,9 @@
 
     <EditText
         android:id="@+id/indirizzo_input"
-        android:layout_width="312dp"
-        android:layout_height="53dp"
-        android:layout_margin="32dp"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_margin="30dp"
         android:drawableBottom="@drawable/segmento"
         android:hint="Indirizzo"
         android:inputType="text"
@@ -112,17 +112,16 @@
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:backgroundTint="@color/black"
+        android:onClick="passaRisultati"
         android:padding="18dp"
         android:text="Cerca"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:onClick="passaRisultati"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.951"
+        app:layout_constraintVertical_bias="0.824"
         tools:ignore="MissingConstraints" />
 
 
