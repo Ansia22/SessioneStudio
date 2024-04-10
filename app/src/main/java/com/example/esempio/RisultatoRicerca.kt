@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.util.Locale
 import kotlin.math.abs
 
 
@@ -36,10 +37,10 @@ class RisultatoRicerca : AppCompatActivity() {
 
     private fun cercaProf(){
 
-        val nomeIn = Professor.getNomeProf()
-        val cognomeIn = Professor.getCognomeProf()
-        val materiaIn = Professor.getMateriaProf()
-        val indirizzoIn = Professor.getIndirizzoProf()
+        val nomeIn = Professor.getNomeProf().toLowerCase()
+        val cognomeIn = Professor.getCognomeProf().toLowerCase()
+        val materiaIn = Professor.getMateriaProf().toLowerCase()
+        val indirizzoIn = Professor.getIndirizzoProf().toLowerCase()
 
         firebaseRef = FirebaseDatabase.getInstance().getReference("Professori")
         firebaseRef.orderByChild("id")
@@ -49,17 +50,17 @@ class RisultatoRicerca : AppCompatActivity() {
                     for (snap in snapshot.children) {
                         try {
                             val professor = snap.getValue(Professor::class.java)
-                            val professorNome = professor?.nome
-                            val professorCognome = professor?.cognome
-                            val professorMateria = professor?.materie
-                            val professorIndirizzo = professor?.indirizzo
+                            val professorNome = professor?.nome?.toLowerCase()
+                            val professorCognome = professor?.cognome?.toLowerCase()
+                            val professorMateria = professor?.materie?.toLowerCase()
+                            val professorIndirizzo = professor?.indirizzo?.toLowerCase()
 
                             if(professorNome != null && Contains(nomeIn,professorNome) &&
                                 professorCognome != null && Contains(cognomeIn,professorCognome) &&
                                 professorMateria != null && Contains(materiaIn,professorMateria) &&
                                 professorIndirizzo != null && Contains(indirizzoIn,professorIndirizzo)){
 
-                                datiProf.add(professorCognome)
+                                datiProf.add("$professorCognome $professorNome")
                             }
 
 
@@ -73,9 +74,7 @@ class RisultatoRicerca : AppCompatActivity() {
                 override fun onCancelled(databaseError: DatabaseError) {
                     // Gestisci eventuali errori durante la lettura dei dati
                     Toast.makeText(applicationContext, "onCanceled: errore lettura dati", Toast.LENGTH_SHORT).show()
-
                 }
-
             })
 
     }
