@@ -3,6 +3,8 @@ package com.example.esempio
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.esempio.models.Professor
@@ -17,11 +19,14 @@ import kotlin.math.abs
 class RisultatoRicerca : AppCompatActivity() {
 
     private lateinit var firebaseRef: DatabaseReference
+    private lateinit var datiProf : ArrayList<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_risultato_ricerca)
 
         cercaProf()
+        datiProf = arrayListOf()
+
     }
     fun tornaRicerca(view: View){
         val intent = Intent(this, RicercaPage::class.java)
@@ -40,6 +45,7 @@ class RisultatoRicerca : AppCompatActivity() {
         firebaseRef.orderByChild("id")
             .addValueEventListener(object:ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+                    datiProf.clear()
                     for (snap in snapshot.children) {
                         try {
                             val professor = snap.getValue(Professor::class.java)
@@ -52,8 +58,8 @@ class RisultatoRicerca : AppCompatActivity() {
                                 professorCognome != null && Contains(cognomeIn,professorCognome) &&
                                 professorMateria != null && Contains(materiaIn,professorMateria) &&
                                 professorIndirizzo != null && Contains(indirizzoIn,professorIndirizzo)){
-                                //INSERIRE QUI IL METODO PER FAR VEDERE ALL'UTENTE I RISULTATI DELLA RICERCA(RIMUOVERE IL TOAST ALLA FINE)
-                                Toast.makeText(applicationContext, "$professorNome, $professorIndirizzo", Toast.LENGTH_SHORT).show()
+
+                                datiProf.add(professorCognome)
                             }
 
 
@@ -61,13 +67,9 @@ class RisultatoRicerca : AppCompatActivity() {
                             // Gestisci eventuali eccezioni durante il recupero dei dati del professore
                             Toast.makeText(applicationContext, "problema durante la ricerca dei dati", Toast.LENGTH_SHORT).show()
                         }
-
-
-
                     }
-
+                    aggiornaLista()
                 }
-
                 override fun onCancelled(databaseError: DatabaseError) {
                     // Gestisci eventuali errori durante la lettura dei dati
                     Toast.makeText(applicationContext, "onCanceled: errore lettura dati", Toast.LENGTH_SHORT).show()
@@ -76,9 +78,19 @@ class RisultatoRicerca : AppCompatActivity() {
 
             })
 
-
-
     }
+
+    private fun aggiornaLista(){
+        val listView = findViewById<ListView>(R.id.listaRisultati)
+
+        val arrayAdapter : ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_list_item_1, datiProf)
+        listView.adapter = arrayAdapter
+        listView.setOnItemClickListener{adapterView, view, i, l->
+            Toast.makeText(this, "item selected " + datiProf[i], Toast.LENGTH_LONG).show()
+        }
+    }
+
+
     private fun Contains(parola:String, stringaDatabase:String): Boolean {
         if(stringaDatabase.length < parola.length){
             return false
