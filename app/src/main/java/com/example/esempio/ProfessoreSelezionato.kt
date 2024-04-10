@@ -3,7 +3,6 @@ package com.example.esempio
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +31,7 @@ class ProfessoreSelezionato : AppCompatActivity() {
         firebaseRef.orderByChild("id").equalTo(idProf)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+
                     for (snap in snapshot.children) {
                         try {
                             val professor = snap.getValue(Professor::class.java)
@@ -45,7 +45,6 @@ class ProfessoreSelezionato : AppCompatActivity() {
                             if (email!= null && nome != null && cognome != null && materie != null && indirizzo != null && orari != null) {
                                 setDati(email,nome,cognome,materie,indirizzo,orari)
                             }
-
 
                         } catch (e: Exception) {
                             // Gestisci eventuali eccezioni durante il recupero dei dati del professore
@@ -72,6 +71,13 @@ class ProfessoreSelezionato : AppCompatActivity() {
         val materieText = findViewById<TextView>(R.id.materieProf)
         val indirizzoText = findViewById<TextView>(R.id.indirizzoProf)
         val orariText = findViewById<TextView>(R.id.orariProf)
+
+        emailText.text = email
+        nomeText.text = nome
+        cognomeText.text = cognome
+        materieText.text = materie
+        indirizzoText.text = indirizzo
+        orariText.text = orari
 
     }
     fun tornaRisultatiRicerca(view: View){
