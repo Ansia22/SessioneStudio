@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.esempio.models.Professor
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -14,13 +15,23 @@ import com.google.firebase.database.ValueEventListener
 
 class Home : AppCompatActivity() {
 
+    private lateinit var firebaseRef : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
+        firebaseRef = FirebaseDatabase.getInstance().getReference("Professori")
+        fetchData()
     }
 
+    private fun fetchData(){
+        firebaseRef.addValueEventListener(object:ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                }
+            })
+    }
 
     fun passaRicerca(view: View){
 
