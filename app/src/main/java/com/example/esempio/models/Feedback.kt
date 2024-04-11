@@ -7,4 +7,8 @@ data class Feedback(
     val numeroStelle:Float,
     val descrizioneFeed:String,
     val dataFeed:String
-)
+){
+
+    constructor() : this("", "", "", 0F,"","")
+    companion object {}
+}
