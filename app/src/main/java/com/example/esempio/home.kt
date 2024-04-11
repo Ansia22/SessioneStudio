@@ -22,6 +22,7 @@ class Home : AppCompatActivity() {
 
         firebaseRef = FirebaseDatabase.getInstance().getReference("Professori")
         fetchData()
+
     }
 
     private fun fetchData() {
