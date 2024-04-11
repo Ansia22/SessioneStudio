@@ -65,12 +65,6 @@ class Home : AppCompatActivity() {
             .show()
     }
 
-    fun passaFeedback (view: View){
-        val intent = Intent(this, FeedbackPage::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-    }
-
     override fun onBackPressed() {
         AlertDialog.Builder(this)
             .setMessage("Uscire da Sessione Studio?")
