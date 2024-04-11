@@ -12,7 +12,7 @@
         android:id="@+id/back_arrow"
         android:layout_width="66dp"
         android:layout_height="44dp"
-        android:onClick="passaInformazioniProfessore"
+        android:onClick="tornaProfessoreSelezionato"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
