@@ -14,27 +14,11 @@ import com.google.firebase.database.ValueEventListener
 
 class Home : AppCompatActivity() {
 
-    private lateinit var firebaseRef: DatabaseReference
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        firebaseRef = FirebaseDatabase.getInstance().getReference("Professori")
-        fetchData()
 
-    }
-
-    private fun fetchData() {
-        firebaseRef.addValueEventListener(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(applicationContext,"errore: $error", Toast.LENGTH_SHORT).show()
-            }
-
-        })
     }
 
 
