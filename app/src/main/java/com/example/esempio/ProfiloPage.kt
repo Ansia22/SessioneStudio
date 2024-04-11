@@ -48,15 +48,23 @@ class ProfiloPage : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         AlertDialog.Builder(this)
             .setMessage("Effettuare il logout?")
             .setCancelable(true)
             .setPositiveButton("Ok") { _, _ ->
-                super.onBackPressed()
-                auth.signOut()
+                tornaLogin()
             }
             .setNegativeButton("Annulla", null)
             .show()
+    }
+
+    private fun tornaLogin() {
+        val intent = Intent(this, LoginPage::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+
+        auth.signOut()
     }
 
     fun passaFeedback(view: View){
