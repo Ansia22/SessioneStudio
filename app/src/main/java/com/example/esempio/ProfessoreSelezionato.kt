@@ -102,4 +102,10 @@ class ProfessoreSelezionato : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun passaFeedbackProfSelezionato(view: View){
+        val intent = Intent(this, FeedbackProfSelezionato::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+
 }
