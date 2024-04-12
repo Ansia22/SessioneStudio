@@ -61,7 +61,7 @@ class ProfiloPage : AppCompatActivity() {
             .show()
     }
     fun passaFeedback(view: View){
-        val intent = Intent(this, FeedbackPersonali::class.java)
+        val intent = Intent(this, FeedbackProfSelezionato::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
