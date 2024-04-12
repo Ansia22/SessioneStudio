@@ -8,7 +8,17 @@ data class Feedback(
     val descrizioneFeed:String,
     val dataFeed:String
 ){
-
     constructor() : this("", "", "", 0F,"","")
-    companion object {}
+
+    companion object {
+        private lateinit var idFeed: String
+        fun setId(idInput: String) {
+            idFeed = idInput
+        }
+
+        fun getIdFeed(): String {
+            return idFeed
+
+        }
+    }
 }
