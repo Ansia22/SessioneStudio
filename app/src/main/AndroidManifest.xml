@@ -16,7 +16,7 @@
             android:name=".RicercaAdminFeedback"
             android:exported="false" />
         <activity
-            android:name=".RicercaAdmin"
+            android:name=".RicercaAdminProf"
             android:exported="false" />
         <activity
             android:name=".LeggiFeedbackUtente"
