@@ -83,15 +83,15 @@
 
     <TextView
         android:id="@+id/descrizioneText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="211dp"
+        android:layout_height="205dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintHorizontal_bias="0.706"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/dataText"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintVertical_bias="0.209" />
 
     <RatingBar
         android:id="@+id/stelleFeed"
