@@ -23,24 +23,24 @@
 
     <SearchView
         android:id="@+id/barraRicercaAdmin"
-        android:layout_width="393dp"
-        android:layout_height="33dp"
+        android:layout_width="401dp"
+        android:layout_height="37dp"
         android:background="@drawable/cornice_tonda"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/listaProfAdmin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078" />
+        app:layout_constraintVertical_bias="0.086" />
 
     <ListView
         android:id="@+id/listaProfAdmin"
-        android:layout_width="409dp"
-        android:layout_height="626dp"
+        android:layout_width="407dp"
+        android:layout_height="609dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/back_arrow"
+        app:layout_constraintVertical_bias="0.964" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
