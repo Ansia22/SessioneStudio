@@ -13,10 +13,19 @@ import androidx.core.view.WindowInsetsCompat
 
 class RicercaAdmin : AppCompatActivity() {
 
+    private lateinit var listView: ListView
+    private lateinit var searchView: SearchView
+    private lateinit var adapter: ArrayAdapter<String>
+    private lateinit var mailList: ArrayList<String>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ricerca_admin)
+        listView = findViewById(R.id.listView)
+        searchView = findViewById(R.id.searchView)
+
+
     }
 
     fun tornaAdminPage(view: View) {
@@ -37,4 +46,5 @@ class RicercaAdmin : AppCompatActivity() {
 
     private fun ricercaBarra() {
 
+    }
 }
