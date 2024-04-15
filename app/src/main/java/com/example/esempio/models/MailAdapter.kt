@@ -1,17 +1,16 @@
-package com.example.esempio.models
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
 import com.example.esempio.R
-import java.util.logging.Filter
 
-class MailAdapter(private val context: Context, private val mailList: List<String>) : BaseAdapter(),
-    Filterable {
+class MailAdapter(private val context: Context, private val mailList: List<String>) :
+    BaseAdapter(), Filterable {
+
     private var filteredMailList: List<String> = mailList
 
     override fun getCount(): Int {
@@ -27,8 +26,9 @@ class MailAdapter(private val context: Context, private val mailList: List<Strin
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.list_item_mail, parent, false)
-        view.findViewById<TextView>(R.id.textViewMail).text = filteredMailList[position]
+        val view = convertView ?: LayoutInflater.from(context)
+            .inflate(R.layout.activity_ricerca_admin, parent, false)
+        view.findViewById<TextView>(R.id.listaProfAdmin).text = filteredMailList[position]
         return view
     }
 
@@ -36,7 +36,7 @@ class MailAdapter(private val context: Context, private val mailList: List<Strin
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val results = FilterResults()
-                if (constraint == null || constraint.isEmpty()) {
+                if (constraint.isNullOrEmpty()) {
                     results.values = mailList
                 } else {
                     val filtered = mailList.filter { it.contains(constraint, ignoreCase = true) }
