@@ -72,7 +72,7 @@ class RicercaAdminProf : AppCompatActivity() {
         })
         listView.setOnItemClickListener{adapterView, view, i, l->
             passaProfessoreSelezionato()
-            Professor.setId(idProf[i])
+            Professor.setVariabiliLogin(idProf[i], mailList[i])
         }
     }
 
