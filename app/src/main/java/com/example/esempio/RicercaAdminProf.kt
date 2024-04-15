@@ -1,7 +1,6 @@
 package com.example.esempio
 
 
-import MailAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -45,14 +44,20 @@ class RicercaAdminProf : AppCompatActivity() {
         listView = findViewById(R.id.listaProfAdmin)
         searchView = findViewById(R.id.barraRicercaAdmin)
 
-        mailList = ArrayList()
-        mailList.add("example1@mail.com")
-        mailList.add("example2@mail.com")
-        mailList.add("example3@mail.com")
+        
 
-        val arrayAdapter : ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_list_item_1, mailList)
-        val mailAdapter = MailAdapter(this, mailList)
-        listView.adapter = mailAdapter
+        val userAdapter : ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_list_item_1, mailList)
+        listView.adapter = userAdapter
 
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                userAdapter.filter.filter(newText)
+                return false
+            }
+        })
     }
 }
