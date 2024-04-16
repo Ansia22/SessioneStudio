@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.esempio.models.AESCrypt
 import com.example.esempio.models.Professor
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -85,13 +86,18 @@ class RegistrazionePage : AppCompatActivity() {
         val emailAdressInput = findViewById<EditText>(R.id.EmailAddress)
         val professorEmail = emailAdressInput.text.toString()
 
+        val passwordInput = findViewById<EditText>(R.id.Password)
+        val professorPassword = passwordInput.text.toString()
+        val key = Professor.getKey()
+        val professorPasswordCrypted = AESCrypt.encrypt(professorPassword, key)
+
         val professorNome = ""
         val professorCognome = ""
         val professorMaterie = ""
         val professorIndirizzo = ""
         val professorDescrizione = ""
 
-        val professor = Professor(professorId,professorEmail, professorNome, professorCognome, professorMaterie, professorIndirizzo, professorDescrizione)
+        val professor = Professor(professorId,professorEmail,professorPasswordCrypted, professorNome, professorCognome, professorMaterie, professorIndirizzo, professorDescrizione)
 
         Professor.setVariabiliLogin(professorId, professorEmail)
 
