@@ -123,9 +123,14 @@ class RicercaAdminProf : AppCompatActivity() {
                 .setMessage("Cosa si desidera visualizzare?")
                 .setCancelable(true)
                 .setPositiveButton("Leggi feedback") { _, _ ->
+
                     passaFeedbackAdmin()
                 }
-                .setNegativeButton("Leggi dati professore", null).show()
+                .setNegativeButton("Leggi dati professore"){ _, _ ->
+
+                    passaProfessoreSelezionato()
+                }.show()
+            Professor.setId(idProf[i])
 
         }
     }
