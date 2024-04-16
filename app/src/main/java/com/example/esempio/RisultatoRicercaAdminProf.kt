@@ -90,7 +90,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
     }
     fun cancellaAccount(view: View){
         AlertDialog.Builder(this)
-            .setMessage("Sicuro di voler eliminare definitivamente?")
+            .setMessage("Sicuro di voler eliminare definitivamente l'account e i suoi feedback?")
             .setCancelable(true)
             .setPositiveButton("Ok") { _, _ ->
                 val intent = Intent(this, RicercaAdminProf::class.java)
@@ -99,6 +99,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
                 startActivity(intent)
                 //eliminaAccount()
                 eliminaData()
+                eliminaFeedbackProf()
                 finish()
 
             }
@@ -125,5 +126,33 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Problema eliminazione dei dati", Toast.LENGTH_SHORT).show()
             }
     }
+
+    private fun eliminaFeedbackProf(){
+        firebaseRef = FirebaseDatabase.getInstance().getReference("Feedback")
+        val idProf = Professor.getIdProf()
+
+        firebaseRef.orderByChild("idProf").equalTo(idProf).addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for(snapshot in dataSnapshot.children){
+                    snapshot.ref.removeValue()
+                        .addOnSuccessListener {
+                            // Eliminazione riuscita
+                            // Puoi eseguire ulteriori azioni se necessario
+                            Toast.makeText(applicationContext, "Feedback eliminati correttamente", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener { e ->
+                            // Gestisci l'errore se l'eliminazione fallisce
+                            Toast.makeText(applicationContext, "Problema eliminazione dei feedback", Toast.LENGTH_SHORT).show()
+                        }
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Problema accesso database", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 }
+
 
