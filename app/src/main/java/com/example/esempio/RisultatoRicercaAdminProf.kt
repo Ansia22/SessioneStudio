@@ -118,7 +118,6 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
         firebaseRef.child(idDaEliminare).removeValue()
             .addOnSuccessListener {
                 // Eliminazione riuscita
-                // Puoi eseguire ulteriori azioni se necessario
                 Toast.makeText(applicationContext, "Dati eliminati correttamente", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
