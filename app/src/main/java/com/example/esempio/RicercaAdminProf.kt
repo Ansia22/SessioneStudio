@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.esempio.models.Professor
 import com.google.firebase.database.DataSnapshot
@@ -33,49 +34,30 @@ class RicercaAdminProf : AppCompatActivity() {
         ricercaEmail()
     }
 
-    fun tornaAdminPage(view: View) {
-        val intent = Intent(this, AdminPage::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
+    fun tornaAdminPage(view: View){
+        AlertDialog.Builder(this)
+            .setMessage("Effettuare il logout?")
+            .setCancelable(true)
+            .setPositiveButton("Ok") { _, _ ->
+                val intent = Intent(this, LoginPage::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            }
+            .setNegativeButton("Annulla", null).show()
     }
-
     override fun onBackPressed() {
         super.onBackPressed()
-        val intent = Intent(this, AdminPage::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
+        AlertDialog.Builder(this)
+            .setMessage("Effettuare il logout?")
+            .setCancelable(true)
+            .setPositiveButton("Ok") { _, _ ->
+                val intent = Intent(this, LoginPage::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            }
+            .setNegativeButton("Annulla", null).show()
 
     }
-
-    private fun ricercaBarra() {
-
-        listView = findViewById(R.id.listaProfAdmin)
-        searchView = findViewById(R.id.barraRicercaAdmin)
-
-        
-
-        val userAdapter : ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_list_item_1, mailList)
-        listView.adapter = userAdapter
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                userAdapter.filter.filter(newText)
-                return false
-            }
-
-        })
-        listView.setOnItemClickListener{adapterView, view, i, l->
-            passaProfessoreSelezionato()
-            Professor.setVariabiliLogin(idProf[i], mailList[i])
-        }
-    }
-
     private fun ricercaEmail(){
 
         firebaseRef = FirebaseDatabase.getInstance().getReference("Professori")
@@ -84,6 +66,7 @@ class RicercaAdminProf : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
 
                     mailList.clear()
+                    idProf.clear()
 
                     for (snap in snapshot.children) {
                         try {
@@ -95,6 +78,7 @@ class RicercaAdminProf : AppCompatActivity() {
                                 mailList.add(professorMail)
                                 idProf.add(professorId)
                             }
+
 
                         } catch (e: Exception) {
                             // Gestisci eventuali eccezioni durante il recupero dei dati del professore
@@ -111,10 +95,53 @@ class RicercaAdminProf : AppCompatActivity() {
 
 
     }
-   private fun passaProfessoreSelezionato(){
-       val intent = Intent(this, RisultatoRicercaAdminProf::class.java)
-       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-       startActivity(intent)
-   }
 
+    private fun ricercaBarra() {
+
+        listView = findViewById(R.id.listaProfAdmin)
+        searchView = findViewById(R.id.barraRicercaAdmin)
+
+
+
+        val userAdapter : ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_list_item_1, mailList)
+        listView.adapter = userAdapter
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                userAdapter.filter.filter(newText)
+                return false
+            }
+
+        })
+
+        listView.setOnItemClickListener{adapterView, view, i, l->
+            AlertDialog.Builder(this)
+                .setMessage("Cosa si desidera visualizzare?")
+                .setCancelable(true)
+                .setPositiveButton("Leggi feedback") { _, _ ->
+                    passaFeedbackAdmin()
+                }
+                .setNegativeButton("Leggi dati professore", null).show()
+
+        }
+    }
+
+    private fun passaProfessoreSelezionato(){
+        val intent = Intent(this, RisultatoRicercaAdminProf::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+
+    private fun passaFeedbackAdmin(){
+        val intent = Intent(this, RicercaAdminFeedback::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+
+
+    }
 }
+
