@@ -47,7 +47,7 @@ class LoginPage : AppCompatActivity() {
             Toast.makeText(applicationContext, "Inserisci username e password", Toast.LENGTH_SHORT).show()
 
         }else if (email == "admin" && password == "admin") {
-            val intent = Intent(this, AdminPage::class.java)
+            val intent = Intent(this, RicercaAdminProf::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
 
