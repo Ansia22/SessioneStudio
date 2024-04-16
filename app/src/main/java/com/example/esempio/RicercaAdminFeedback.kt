@@ -49,13 +49,14 @@ class RicercaAdminFeedback : AppCompatActivity() {
 
     }
 
-    private fun ricercaNome(){  //cambiare nomi variabili e liste
+    private fun ricercaNome(){
 
         firebaseRef = FirebaseDatabase.getInstance().getReference("Feedback")
-        firebaseRef.orderByChild("email")
+        val idProf = Professor.getIdProf()
+
+        firebaseRef.orderByChild("idProf").equalTo(idProf)
             .addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-
                     nomeList.clear()
                     idFeedback.clear()
 
@@ -89,8 +90,6 @@ class RicercaAdminFeedback : AppCompatActivity() {
         listView = findViewById(R.id.listaFeedbackAdmin)
         searchView = findViewById(R.id.barraRicercaFeedbackAdmin)
 
-
-
         val userAdapter : ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_list_item_1, nomeList)
         listView.adapter = userAdapter
 
@@ -107,7 +106,7 @@ class RicercaAdminFeedback : AppCompatActivity() {
         })
         listView.setOnItemClickListener{adapterView, view, i, l->
             passaFeedbackSelezionato()
-            //Professor.setVariabiliLogin(idFeedback[i], nomeList[i]) SBGIATO!!!!! SERVE IN FEEDBACK
+            Feedback.setId(idFeedback[i])
         }
     }
     private fun passaFeedbackSelezionato(){
