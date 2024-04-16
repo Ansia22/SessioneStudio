@@ -12,6 +12,7 @@ data class Feedback(
 
     companion object {
         private lateinit var idFeed: String
+
         fun setId(idInput: String) {
             idFeed = idInput
         }
