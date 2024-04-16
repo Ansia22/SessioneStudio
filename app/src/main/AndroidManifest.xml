@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Esempio"
         tools:targetApi="31">
         <activity
+            android:name=".RisultatoRicercaFeedbackAdmin"
+            android:exported="false" />
+        <activity
             android:name=".RisultatoRicercaAdminProf"
             android:exported="false" />
         <activity
