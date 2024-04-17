@@ -7,7 +7,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.esempio.models.AESCrypt
 import com.example.esempio.models.Professor
+import com.google.firebase.Firebase
+import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -16,12 +22,16 @@ import com.google.firebase.database.ValueEventListener
 
 class RisultatoRicercaAdminProf : AppCompatActivity() {
 
+    private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseRef: DatabaseReference
+    private lateinit var professorMail:String
+    private lateinit var professorPasswordEncrypted: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_risultato_ricerca_admin_prof)
 
+        firebaseAuth = Firebase.auth
         cercaDatiProf()
     }
 
@@ -49,11 +59,12 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
                             val professorIndirizzo = professor?.indirizzo
                             val professorId = professor?.id
                             val professorOrario = professor?.orari
-                            val professorMail = professor?.email
+                            professorMail = professor?.email.toString()
+                            professorPasswordEncrypted = professor?.passwordCriptata.toString()
 
-                            if(professorId != null && professorMail != null && professorNome != null &&
+                            if(professorId != null && professorNome != null &&
                                 professorCognome != null && professorMateria != null && professorIndirizzo != null && professorOrario != null){
-                                impostaDatiProf(professorId, professorMail, professorNome, professorCognome, professorMateria, professorIndirizzo, professorOrario)
+                                impostaDatiProf(professorId, professorNome, professorCognome, professorMateria, professorIndirizzo, professorOrario)
                             }
 
                         } catch (e: Exception) {
@@ -70,7 +81,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
 
     }
 
-    private fun impostaDatiProf(id:String,mail:String,nome:String,cognome:String,materie:String,indirizzo:String,orari:String,){
+    private fun impostaDatiProf(id:String,nome:String,cognome:String,materie:String,indirizzo:String,orari:String,){
         val idText = findViewById<TextView>(R.id.idProfessore)
         val mailText = findViewById<TextView>(R.id.mailProfessore)
         val orariText = findViewById<TextView>(R.id.orariProfessore)
@@ -80,7 +91,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
         val indirizzoText =findViewById<TextView>(R.id.indirizzoProfessore)
 
         idText.setText(id)
-        mailText.setText(mail)
+        mailText.setText(professorMail)
         orariText.setText(orari)
         nomeText.setText(nome)
         cognomeText.setText(cognome)
@@ -97,9 +108,11 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intent)
-                //eliminaAccount()
+
+                eliminaAccount()
                 eliminaData()
                 eliminaFeedbackProf()
+
                 finish()
 
             }
@@ -107,6 +120,31 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
             .show()
     }
     private fun eliminaAccount() {
+
+        val key = Professor.getKey()
+        val passwordDecypted = AESCrypt.decrypt(professorPasswordEncrypted, key)
+
+        firebaseAuth.signInWithEmailAndPassword(professorMail, passwordDecypted)
+
+        Thread.sleep(1000)    /* firebaseAuth.signInWithEmailAndPassword(professorMail, passwordDecypted)
+                                    impiega troppo tempo ad effettuare il login del professore. per
+                                    questo motivo aspettiamo 1 secondo, il tempo necessario affinchè "currentUser"
+                                    possa contenere il valore dell'istanza dell'utente da eliminare. */
+
+        val firebaseAuth = FirebaseAuth.getInstance()
+
+        val currentUser = firebaseAuth.currentUser
+
+        Toast.makeText(applicationContext, "DENTRO $passwordDecypted $professorMail $currentUser", Toast.LENGTH_SHORT).show()
+
+        currentUser?.delete()?.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(applicationContext, "DENTRO SUCCESSO", Toast.LENGTH_SHORT).show()
+            }
+        }?.addOnFailureListener { e ->
+            Toast.makeText(applicationContext, "ERRORE", Toast.LENGTH_SHORT).show()
+        }
+
 
     }
 
@@ -121,7 +159,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Dati eliminati correttamente", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
-                // Gestisci l'errore se l'eliminazione fallisce
+                // errore se l'eliminazione fallisce
                 Toast.makeText(applicationContext, "Problema eliminazione dei dati", Toast.LENGTH_SHORT).show()
             }
     }
@@ -136,11 +174,10 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
                     snapshot.ref.removeValue()
                         .addOnSuccessListener {
                             // Eliminazione riuscita
-                            // Puoi eseguire ulteriori azioni se necessario
                             Toast.makeText(applicationContext, "Feedback eliminati correttamente", Toast.LENGTH_SHORT).show()
                         }
                         .addOnFailureListener { e ->
-                            // Gestisci l'errore se l'eliminazione fallisce
+                            // errore se l'eliminazione fallisce
                             Toast.makeText(applicationContext, "Problema eliminazione dei feedback", Toast.LENGTH_SHORT).show()
                         }
 
