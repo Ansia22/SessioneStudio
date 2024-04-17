@@ -131,8 +131,8 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="195dp"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Elimina feedback"
         android:backgroundTint="@color/red"
         android:onClick="eliminaFeedback"
