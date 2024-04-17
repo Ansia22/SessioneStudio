@@ -54,7 +54,6 @@ class LoginPage : AppCompatActivity() {
         }else if(password.length<6){
             Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
 
-
         } else {
             auth.signInWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
                 .addOnCompleteListener(this){task->
