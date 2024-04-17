@@ -23,11 +23,13 @@
 
     <EditText
         android:id="@+id/EmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="236dp"
+        android:layout_height="61dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="E-Mail"
+        android:background="@drawable/custom_input"
+        android:paddingHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -37,10 +39,12 @@
 
     <EditText
         android:id="@+id/Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="236dp"
+        android:layout_height="61dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:background="@drawable/custom_input"
+        android:paddingHorizontal="10dp"
         android:hint="Inserisci la password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,11 +55,13 @@
 
     <EditText
         android:id="@+id/PasswordRipetuta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="236dp"
+        android:layout_height="61dp"
         android:ems="10"
         android:inputType="textPassword"
         android:hint="Conferma la password"
+        android:background="@drawable/custom_input"
+        android:paddingHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
