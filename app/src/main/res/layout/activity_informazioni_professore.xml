@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_image"
+    android:background="@drawable/sfondo_login"
     tools:context=".InformazioniProfessore">
 
     <ImageView
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/back_arrow"
+        app:srcCompat="@drawable/freccia_bianca"
         android:onClick="tornaProfilo" />
 
     <EditText
@@ -44,7 +44,7 @@
         android:ems="10"
         android:hint="Nome"
         android:inputType="text"
-        android:background="@drawable/custom_input"
+        android:background="@drawable/custom_input_arancio"
         android:paddingHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
         android:id="@+id/cognome"
         android:layout_width="236dp"
         android:layout_height="61dp"
-        android:background="@drawable/custom_input"
+        android:background="@drawable/custom_input_arancio"
         android:ems="10"
         android:hint="Cognome"
         android:inputType="text"
@@ -73,7 +73,7 @@
         android:id="@+id/materie"
         android:layout_width="236dp"
         android:layout_height="61dp"
-        android:background="@drawable/custom_input"
+        android:background="@drawable/custom_input_arancio"
         android:ems="10"
         android:hint="Materie"
         android:inputType="text"
@@ -89,7 +89,7 @@
         android:id="@+id/orari"
         android:layout_width="236dp"
         android:layout_height="61dp"
-        android:background="@drawable/custom_input"
+        android:background="@drawable/custom_input_arancio"
         android:ems="10"
         android:hint="Orari"
         android:inputType="text"
@@ -106,7 +106,7 @@
         android:layout_width="179dp"
         android:layout_height="67dp"
         android:onClick="salvaDati"
-        android:text="salva modifiche"
+        android:text="SALVA MODIFICHE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
