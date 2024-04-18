@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_image"
+    android:background="@drawable/sfondo_login"
     tools:context=".FeedbackProfSelezionato">
 
 
@@ -20,41 +20,65 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/back_arrow" />
+        app:srcCompat="@drawable/freccia_bianca" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="412dp"
+        android:layout_height="613dp"
+        android:background="@drawable/cornice_tonda"
+        android:backgroundTint="@color/white"
+        android:paddingTop="20dp"
+        android:textAlignment="center"
+        android:textColor="#5320BA"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.953"
+        tools:ignore="MissingConstraints" />
 
     <ListView
         android:id="@+id/listViewFeedback"
-        android:layout_width="408dp"
-        android:layout_height="615dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="409dp"
+        android:layout_height="583dp"
+
+        app:layout_constraintBottom_toBottomOf="@id/textView18"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
+        app:layout_constraintTop_toTopOf="@+id/textView18"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/stelle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
         android:layout_marginTop="64dp"
+        android:layout_marginEnd="300dp"
         android:text="TextView"
+        android:textColor="@color/white"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.004"
-        app:layout_constraintStart_toEndOf="@+id/media_valutazioni"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/media_valutazioni"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.029" />
 
     <TextView
         android:id="@+id/media_valutazioni"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Media valutazioni: "
+        android:text="MEDIA VALUTAZIONI: "
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/listViewFeedback"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -64,11 +88,13 @@
         android:layout_width="232dp"
         android:layout_height="43dp"
         android:isIndicator="true"
+        android:progressBackgroundTint="@color/white"
+        android:progressTint="@color/arancione"
         android:scaleX="0.8"
         android:scaleY="0.8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.901"
         app:layout_constraintStart_toStartOf="@+id/media_valutazioni"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.075" />
