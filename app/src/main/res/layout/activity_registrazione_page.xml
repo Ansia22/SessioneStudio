@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@drawable/background_image"
+    android:background="@drawable/sfondo_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistrazionePage">
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/back_arrow"
+        app:srcCompat="@drawable/freccia_bianca"
         android:onClick="tornaHome"/>
 
     <EditText
@@ -28,7 +28,7 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="E-Mail"
-        android:background="@drawable/custom_input"
+        android:background="@drawable/custom_input_arancio"
         android:paddingHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         android:layout_height="61dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:background="@drawable/custom_input"
+        android:background="@drawable/custom_input_arancio"
         android:paddingHorizontal="10dp"
         android:hint="Inserisci la password"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,7 +60,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="Conferma la password"
-        android:background="@drawable/custom_input"
+        android:background="@drawable/custom_input_arancio"
         android:paddingHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,7 @@
         android:layout_height="53dp"
         android:background="@drawable/cornice_tonda"
         android:onClick="RegistraUtente"
-        android:text="Registrati"
+        android:text="REGISTRATI"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
