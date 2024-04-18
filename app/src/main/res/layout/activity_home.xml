@@ -5,49 +5,72 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_image"
+    android:background="@drawable/sfondo_login"
     tools:context=".Home">
 
 
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="414dp"
+        android:layout_height="466dp"
+        android:background="@drawable/frame_bianco"
+        android:backgroundTint="@color/white"
+        android:paddingTop="20dp"
+        android:textAlignment="center"
+        android:textColor="#5320BA"
+        android:textSize="36sp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/accediButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="75dp"
         android:onClick="passaLogin"
         android:text="ACCEDI"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/cercaButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.902" />
+
+    <Button
+        android:id="@+id/cercaButton"
+        android:layout_width="240dp"
+        android:layout_height="75dp"
+        android:onClick="passaRicerca"
+        android:text="CERCA INSEGNANTI"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.924" />
-
-    <Button
-        android:id="@+id/cercaButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CERCA INSEGNANTI"
-        android:onClick="passaRicerca"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.524" />
+        app:layout_constraintVertical_bias="0.718" />
 
     <TextView
         android:id="@+id/studiaConNoi"
-        android:layout_width="256dp"
-        android:layout_height="107dp"
+        android:layout_width="382dp"
+        android:layout_height="184dp"
         android:gravity="center"
-        android:text="Studia con noi!"
-        android:textAppearance="@style/royal"
-        android:textSize="15pt"
+        android:text="Studia con noi"
+        android:textColor="@color/white"
+        android:textSize="25pt"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/accediButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.885" />
+        app:layout_constraintVertical_bias="0.403" />
 
     <TextView
         android:id="@+id/registrati"
@@ -57,10 +80,10 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintHorizontal_bias="0.37"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
+        app:layout_constraintVertical_bias="0.793" />
 
     <TextView
         android:id="@+id/testoRegistra"
@@ -71,10 +94,10 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toEndOf="@+id/registrati"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
+        app:layout_constraintVertical_bias="0.793" />
 
     <ImageView
         android:id="@+id/info"
