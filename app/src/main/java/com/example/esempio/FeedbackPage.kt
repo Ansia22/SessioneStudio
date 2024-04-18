@@ -71,16 +71,4 @@ class FeedbackPage : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        AlertDialog.Builder(this)
-            .setMessage("Uscire senza salvare la recensione?")
-            .setCancelable(true)
-            .setPositiveButton("Ok") { _, _ ->
-                super.onBackPressed()
-            }
-            .setNegativeButton("Annulla", null)
-            .show()
-    }
 }
