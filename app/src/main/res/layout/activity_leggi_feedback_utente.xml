@@ -5,8 +5,28 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_image"
+    android:background="@drawable/sfondo_login"
     tools:context=".LeggiFeedbackUtente">
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="414dp"
+        android:layout_height="466dp"
+        android:background="@drawable/frame_bianco"
+        android:backgroundTint="@color/white"
+        android:paddingTop="20dp"
+        android:textAlignment="center"
+        android:textColor="#5320BA"
+        android:textSize="36sp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.996"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/back_arrow"
@@ -19,55 +39,60 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/back_arrow" />
+        app:srcCompat="@drawable/freccia_bianca" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Descrizione:"
+        android:text="DESCRIZIONE:"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintVertical_bias="0.230" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Data recensione:"
+        android:text="DATA RECENSIONE:"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.101" />
+        app:layout_constraintVertical_bias="0.170" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome e cognome: "
+        android:text="NOME E COGNOME: "
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintHorizontal_bias="0.182"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+        app:layout_constraintTop_toTopOf="@+id/textView18"
+        app:layout_constraintVertical_bias="0.184" />
 
     <TextView
         android:id="@+id/nomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         android:text="TextView"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+        app:layout_constraintTop_toTopOf="@+id/textView18"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/dataText"
@@ -76,27 +101,29 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/nomeText"
-        app:layout_constraintVertical_bias="0.101" />
+        app:layout_constraintVertical_bias="0.177" />
 
     <TextView
         android:id="@+id/descrizioneText"
-        android:layout_width="211dp"
-        android:layout_height="205dp"
+        android:layout_width="173dp"
+        android:layout_height="175dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.706"
+        app:layout_constraintHorizontal_bias="0.829"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/dataText"
-        app:layout_constraintVertical_bias="0.209" />
+        app:layout_constraintVertical_bias="0.545" />
 
     <RatingBar
         android:id="@+id/stelleFeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressBackgroundTint="@color/white"
+        android:progressTint="@color/arancione"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
