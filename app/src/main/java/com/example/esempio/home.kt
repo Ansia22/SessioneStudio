@@ -55,7 +55,10 @@ class Home : AppCompatActivity() {
 
     fun infoAlert(view: View){
         AlertDialog.Builder(this)
-            .setMessage("ciao a tutti!")
+            .setMessage("Benvenuti in SessioneStudio! Una applicazione sviluppata per studenti e professori. " +
+                    "Grazie a SessioneStudio potrai cercare il professore più adatto alle tue esigenze e migliorare " +
+                    "i risultati dei tuoi esami! Scuole medie? Superiori? Università? Cosa aspetti! " +
+                    "Premi il tasto 'Cerca' e inizia a studiare!")
             .setCancelable(true)
             .setPositiveButton("ok", null)
             .show()
