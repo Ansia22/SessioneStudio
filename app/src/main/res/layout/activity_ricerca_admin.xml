@@ -3,43 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@drawable/background_image"
+    android:background="@drawable/sfondo_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RicercaAdminProf">
 
+
     <ImageView
         android:id="@+id/back_arrow"
-        android:layout_width="66dp"
-        android:layout_height="44dp"
+        android:layout_width="53dp"
+        android:layout_height="41dp"
+        android:onClick="tornaAdminPage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/back_arrow"
-        android:onClick="tornaAdminPage" />
+        app:srcCompat="@drawable/freccia_bianca" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="415dp"
+        android:layout_height="623dp"
+        android:background="@drawable/cornice_tonda"
+        android:backgroundTint="@color/white"
+        android:paddingTop="20dp"
+        android:textAlignment="center"
+        android:textColor="#5320BA"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.953"
+        tools:ignore="MissingConstraints" />
 
     <SearchView
         android:id="@+id/barraRicercaAdmin"
         android:layout_width="401dp"
         android:layout_height="37dp"
-        android:background="@drawable/cornice_tonda"
-        app:layout_constraintBottom_toBottomOf="@+id/listaProfAdmin"
+        android:background="@drawable/custom_input_arancio"
+        app:layout_constraintBottom_toTopOf="@+id/textView18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.746" />
 
     <ListView
         android:id="@+id/listaProfAdmin"
+
         android:layout_width="407dp"
         android:layout_height="609dp"
-        android:layout_marginTop="104dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="@id/textView18"
+        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/textView18" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
