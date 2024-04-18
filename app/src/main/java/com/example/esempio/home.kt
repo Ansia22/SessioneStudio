@@ -57,8 +57,10 @@ class Home : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setMessage("Benvenuti in SessioneStudio! Una applicazione sviluppata per studenti e professori. " +
                     "Grazie a SessioneStudio potrai cercare il professore più adatto alle tue esigenze e migliorare " +
-                    "i risultati dei tuoi esami! Scuole medie? Superiori? Università? Cosa aspetti! " +
-                    "Premi il tasto 'Cerca' e inizia a studiare!")
+                    "i risultati dei tuoi test. Scuole medie? Superiori? Università? Cosa aspetti! " +
+                    "Premi il tasto 'Cerca' e inizia a studiare! \n Se invece sei un professore " +
+                    "disposto a trasmettere i tuoi insegnamenti agli studenti nessun problema! registrati, " +
+                    "inserisci i tuoi dati e potrai iniziare!")
             .setCancelable(true)
             .setPositiveButton("ok", null)
             .show()
