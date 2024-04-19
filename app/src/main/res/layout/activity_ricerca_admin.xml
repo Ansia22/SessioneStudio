@@ -24,42 +24,39 @@
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="415dp"
-        android:layout_height="623dp"
+        android:layout_width="414dp"
+        android:layout_height="631dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/cornice_tonda"
         android:backgroundTint="@color/white"
-        android:paddingTop="20dp"
         android:textAlignment="center"
         android:textColor="#5320BA"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953"
+        app:layout_constraintTop_toBottomOf="@+id/barraRicercaAdmin"
         tools:ignore="MissingConstraints" />
 
     <SearchView
         android:id="@+id/barraRicercaAdmin"
         android:layout_width="401dp"
         android:layout_height="37dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/custom_input_arancio"
-        app:layout_constraintBottom_toTopOf="@+id/textView18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.746" />
-
+        app:layout_constraintTop_toTopOf="parent" />
     <ListView
         android:id="@+id/listaProfAdmin"
-
         android:layout_width="407dp"
         android:layout_height="609dp"
-        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="@id/textView18"
-        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textView18" />
+        app:layout_constraintTop_toTopOf="@+id/textView18"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
