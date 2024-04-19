@@ -41,17 +41,18 @@
         android:id="@+id/titoloApp"
         android:layout_width="363dp"
         android:layout_height="338dp"
+        android:fontFamily="@font/simple_plan"
         android:gravity="center"
         android:text="Sessione Studio"
         android:textColor="@color/white"
-        android:textSize="35pt"
+        android:textSize="50pt"
         android:textStyle="bold"
-        android:visibility="visible"
+        android:visibility="invisible"
+        app:fontFamily="@font/simple_plan"
         app:layout_constraintBottom_toTopOf="@+id/flashingIcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fullScreenView"
-        app:layout_constraintVertical_bias="0.596" />
+        app:layout_constraintTop_toTopOf="@+id/fullScreenView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
