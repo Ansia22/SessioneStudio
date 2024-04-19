@@ -135,14 +135,12 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
 
         val currentUser = firebaseAuth.currentUser
 
-        Toast.makeText(applicationContext, "DENTRO $passwordDecypted $professorMail $currentUser", Toast.LENGTH_SHORT).show()
-
         currentUser?.delete()?.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                Toast.makeText(applicationContext, "DENTRO SUCCESSO", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Professore eliminato con successo", Toast.LENGTH_SHORT).show()
             }
         }?.addOnFailureListener { e ->
-            Toast.makeText(applicationContext, "ERRORE", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Errore durante l'eliminazione del prof", Toast.LENGTH_SHORT).show()
         }
 
 
