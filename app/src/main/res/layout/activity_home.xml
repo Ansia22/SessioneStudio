@@ -58,19 +58,19 @@
 
     <TextView
         android:id="@+id/studiaConNoi"
-        android:layout_width="382dp"
-        android:layout_height="184dp"
+        android:layout_width="403dp"
+        android:layout_height="188dp"
+        android:fontFamily="@font/simple_plan"
         android:gravity="center"
         android:text="Studia con noi"
         android:textColor="@color/white"
-        android:textSize="25pt"
+        android:textSize="35pt"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/accediButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.403" />
+        app:layout_constraintVertical_bias="0.36" />
 
     <TextView
         android:id="@+id/registrati"
