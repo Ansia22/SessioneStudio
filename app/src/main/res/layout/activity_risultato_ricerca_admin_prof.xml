@@ -93,7 +93,7 @@
         app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toEndOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/orariProfessore"
-        app:layout_constraintVertical_bias="0.405" />
+        app:layout_constraintVertical_bias="0.4" />
 
     <TextView
         android:id="@+id/nomeProfessore"
@@ -118,11 +118,11 @@
         app:layout_constraintEnd_toEndOf="@+id/textView18"
         app:layout_constraintHorizontal_bias="0.605"
         app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/cognomeProfessore"
+        app:layout_constraintTop_toBottomOf="@+id/materieProfessore"
         app:layout_constraintVertical_bias="0.146" />
 
     <TextView
-        android:id="@+id/materieProfessore"
+        android:id="@+id/cognomeProfessore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -163,17 +163,17 @@
         app:layout_constraintVertical_bias="0.115" />
 
     <TextView
-        android:id="@+id/cognomeProfessore"
+        android:id="@+id/materieProfessore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="@+id/textView18"
-        app:layout_constraintHorizontal_bias="0.544"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/materieProfessore"
-        app:layout_constraintVertical_bias="0.135" />
+        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/cognomeProfessore"
+        app:layout_constraintVertical_bias="0.198" />
 
     <TextView
         android:id="@+id/mailProfessore"
