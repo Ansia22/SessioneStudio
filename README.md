@@ -7,5 +7,5 @@ Universita' degli studi dell'Insubria
 Corso di laura triennale, informatica
 
 # Progetto realizzato da:
-753575	Tagliabue	Federico
+753575	Tagliabue	Federico \n
 752919  Besana Davide
