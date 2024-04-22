@@ -1,5 +1,5 @@
 # SessioneStudio
-Progetto "Sessione Studio"
+Progetto numero 34 "RipetizioniApp"
 
 Programmazione di Dispositivi Mobili
 
