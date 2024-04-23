@@ -16,7 +16,6 @@ import com.google.firebase.database.ValueEventListener
 class InformazioniProfessore : AppCompatActivity() {
 
     private lateinit var firebaseRef : DatabaseReference
-    private lateinit var professorPassword:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +53,6 @@ class InformazioniProfessore : AppCompatActivity() {
                             val materie = professor?.materie
                             val indirizzo = professor?.indirizzo
                             val orari = professor?.orari
-                            professorPassword = professor?.passwordCriptata.toString()
 
                             if (nome != null && cognome != null && materie != null &&
                                 indirizzo != null && orari != null) {
@@ -110,7 +108,7 @@ class InformazioniProfessore : AppCompatActivity() {
 
         val professorId = Professor.getIdProf()
         val professorMail = Professor.getEmailProf()
-        val updateprofessor = Professor(professorId,professorMail, professorPassword,newNome,newCognome,newMaterie,newIndirizzo,newOrari)
+        val updateprofessor = Professor(professorId,professorMail,newNome,newCognome,newMaterie,newIndirizzo,newOrari)
 
         val professorRef = firebaseRef.child(professorId)
         professorRef.setValue(updateprofessor)
