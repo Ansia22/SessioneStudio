@@ -16,8 +16,8 @@ Gli admin hanno il potere di eliminare i singoli feedback o l'intero account del
 
 ## Problemi/Aspeti migliorabili
 L'applicazione da noi realizzata non è tutt'oggi utilizzabile ufficialmente dagli utenti. Infatti alcuni problemi di sicurezza, layout o sintassi potrebbero causare problemi sui diversi dispositivi. Ecco alcuni aspetti migliorabili:
-- Gestione degli Admin
-    - Qualsiasi utente a conoscenza di username e password può tranquillamente accedere ed eliminare account e feedback 
+### Gestione degli Admin
+Qualsiasi utente a conoscenza di username e password può tranquillamente accedere ed eliminare account e feedback 
 
 
 # Progetto realizzato da:
