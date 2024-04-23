@@ -33,6 +33,7 @@ class ProfiloPage : AppCompatActivity() {
             .setPositiveButton("Ok") { _, _ ->
                 val intent = Intent(this, LoginPage::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intent)
 
                 auth.signOut()
