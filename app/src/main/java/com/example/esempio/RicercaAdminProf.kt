@@ -46,16 +46,16 @@ class RicercaAdminProf : AppCompatActivity() {
             .setNegativeButton("Annulla", null).show()
     }
     override fun onBackPressed() {
-        super.onBackPressed()
         AlertDialog.Builder(this)
             .setMessage("Effettuare il logout?")
             .setCancelable(true)
-            .setPositiveButton("Ok") { _, _ ->
+            .setNegativeButton("Ok") { _, _ ->
                 val intent = Intent(this, LoginPage::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
+                super.onBackPressed()
             }
-            .setNegativeButton("Annulla", null).show()
+            .setPositiveButton("Annulla", null).show()
 
     }
     private fun ricercaEmail(){
