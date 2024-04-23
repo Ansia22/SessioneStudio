@@ -7,12 +7,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.esempio.models.AESCrypt
+import com.example.esempio.models.AccountDisabilitati
 import com.example.esempio.models.Professor
 import com.google.firebase.Firebase
-import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -24,8 +22,8 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseRef: DatabaseReference
-    private lateinit var professorMail:String
-    private lateinit var professorPasswordEncrypted: String
+    private lateinit var professorId: String
+    private lateinit var professorMail: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,14 +55,14 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
                             val professorCognome = professor?.cognome
                             val professorMateria = professor?.materie
                             val professorIndirizzo = professor?.indirizzo
-                            val professorId = professor?.id
+                            professorId = professor?.id.toString()
                             val professorOrario = professor?.orari
                             professorMail = professor?.email.toString()
-                            professorPasswordEncrypted = professor?.passwordCriptata.toString()
 
-                            if(professorId != null && professorNome != null &&
-                                professorCognome != null && professorMateria != null && professorIndirizzo != null && professorOrario != null){
-                                impostaDatiProf(professorId, professorNome, professorCognome, professorMateria, professorIndirizzo, professorOrario)
+                            if(professorNome != null &&
+                                professorCognome != null && professorMateria != null &&
+                                professorIndirizzo != null && professorOrario != null){
+                                impostaDatiProf(professorNome, professorCognome, professorMateria, professorIndirizzo, professorOrario)
                             }
 
                         } catch (e: Exception) {
@@ -81,7 +79,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
 
     }
 
-    private fun impostaDatiProf(id:String,nome:String,cognome:String,materie:String,indirizzo:String,orari:String,){
+    private fun impostaDatiProf(nome:String,cognome:String,materie:String,indirizzo:String,orari:String,){
         val idText = findViewById<TextView>(R.id.idProfessore)
         val mailText = findViewById<TextView>(R.id.mailProfessore)
         val orariText = findViewById<TextView>(R.id.orariProfessore)
@@ -90,7 +88,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
         val materieText =findViewById<TextView>(R.id.materieProfessore)
         val indirizzoText =findViewById<TextView>(R.id.indirizzoProfessore)
 
-        idText.setText(id)
+        idText.setText(professorId)
         mailText.setText(professorMail)
         orariText.setText(orari)
         nomeText.setText(nome)
@@ -101,7 +99,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
     }
     fun cancellaAccount(view: View){
         AlertDialog.Builder(this)
-            .setMessage("Sicuro di voler eliminare definitivamente l'account e i suoi feedback?")
+            .setMessage("Sicuro di voler disabilitare l'account ed eliminare i suoi feedback?")
             .setCancelable(true)
             .setPositiveButton("Ok") { _, _ ->
                 val intent = Intent(this, RicercaAdminProf::class.java)
@@ -109,7 +107,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intent)
 
-                eliminaAccount()
+                disabilitaAccount()
                 eliminaData()
                 eliminaFeedbackProf()
 
@@ -119,29 +117,14 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
             .setNegativeButton("Annulla", null)
             .show()
     }
-    private fun eliminaAccount() {
+    private fun disabilitaAccount() {
 
-        val key = Professor.getKey()
-        val passwordDecypted = AESCrypt.decrypt(professorPasswordEncrypted, key)
+        val database = FirebaseDatabase.getInstance()
+        val firebaseRef = database.getReference("AccountDisabilitati")
 
-        firebaseAuth.signInWithEmailAndPassword(professorMail, passwordDecypted)
+        val accountDisabilitato = AccountDisabilitati(professorId, professorMail)
 
-        Thread.sleep(1000)    /* firebaseAuth.signInWithEmailAndPassword(professorMail, passwordDecypted)
-                                    impiega troppo tempo ad effettuare il login del professore. per
-                                    questo motivo aspettiamo 1 secondo, il tempo necessario affinchè "currentUser"
-                                    possa contenere il valore dell'istanza dell'utente da eliminare. */
-
-        val firebaseAuth = FirebaseAuth.getInstance()
-
-        val currentUser = firebaseAuth.currentUser
-
-        currentUser?.delete()?.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Toast.makeText(applicationContext, "Professore eliminato con successo", Toast.LENGTH_SHORT).show()
-            }
-        }?.addOnFailureListener { e ->
-            Toast.makeText(applicationContext, "Errore durante l'eliminazione del prof", Toast.LENGTH_SHORT).show()
-        }
+        firebaseRef.child(professorId).setValue(accountDisabilitato)
 
 
     }
