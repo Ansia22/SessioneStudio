@@ -15,7 +15,9 @@ Gli studenti non dovranno creare un account e potranno iniziare subito a cercare
 Gli admin hanno il potere di eliminare i singoli feedback o l'intero account del professore. Nel caso in cui il profilo dell'insegnante venisse cancellato, verrebbero di conseguenza eliminati anche tutti i feedback legati all'account. Per accedere come amministratore bisogna effettuare il login inserendo come email e password "admin", "admin".
 
 ## Problemi/Aspeti migliorabili
-
+L'applicazione da noi realizzata non è tutt'oggi utilizzabile ufficialmente dagli utenti. Infatti alcuni problemi di sicurezza, layout o sintassi potrebbero causare problemi sui diversi dispositivi. Ecco alcuni aspetti migliorabili:
+- Gestione degli Admin
+    - Qualsiasi utente a conoscenza di username e password può tranquillamente accedere ed eliminare account e feedback 
 
 
 # Progetto realizzato da:
