@@ -21,7 +21,7 @@ L'applicazione da noi realizzata non è tutt'oggi utilizzabile ufficialmente dag
 ### Gestione degli Admin
 Qualsiasi utente a conoscenza di username e password può tranquillamente accedere ed eliminare account e feedback di professori e studenti. Questo problema di sicurezza mette a rischio i dati contenuti nel database di firebase.
 ### Problemi di Layout
-L'applicazione non è disponibile per tutti i dispositivi di qualsiasi dimensione. Per testare l'applicazione utilizzando un emulatore si consiglia di scaricare quello utilizzato durante la programmazione dell'app "Medium Phone API 30, Android 11.0 ("R"), 1080x2400". Inoltre nei campi testo non è possibile utilizzare lettere accentate.
+L'applicazione non è disponibile per tutti i dispositivi di qualsiasi dimensione. Per testare l'applicazione utilizzando un emulatore si consiglia di scaricare quello utilizzato durante la programmazione dell'app "Medium Phone API 30, Android 11.0 ("R"), 1080x2400".
 ### Gestione onBackPress
 L'utilizzo della funzione integrata su android"onBackPress" per tornare indietro potrebbe causare crash dell'app o dell'activity corrente. Pertanto si consiglia di utilizzare la freccia in alto a sinistra per tornare alla pagina precedente.
 ### Gestione delle Password
