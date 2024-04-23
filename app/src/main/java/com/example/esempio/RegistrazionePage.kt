@@ -45,22 +45,26 @@ class RegistrazionePage : AppCompatActivity() {
         val passwordReg = passwordInput.text.toString()
         val passwordRegRip = passwordRipetutaInput.text.toString()
 
-        if (email.isEmpty() || passwordReg.isEmpty() || passwordRegRip.isEmpty()) {
-            Toast.makeText(applicationContext, "Inserisci tutti i dati richiesti", Toast.LENGTH_SHORT)
-                .show()
-        }else if(!isAbilitato(email)){
+        isAbilitato(email){ emailPresente ->
+            if (emailPresente) {
+                Toast.makeText(applicationContext, "La mail inserita è stata disabilitata dai nostri admin, " +
+                        "cambiare account o riprovare", Toast.LENGTH_SHORT).show()
+            }else{
 
-            Toast.makeText(applicationContext, "La mail inserita è stata disabilitata dai nostri admin, " +
-                    "cambiare account o riprovare", Toast.LENGTH_SHORT).show()
+                if (email.isEmpty() || passwordReg.isEmpty() || passwordRegRip.isEmpty()) {
+                    Toast.makeText(applicationContext, "Inserisci tutti i dati richiesti", Toast.LENGTH_SHORT)
+                        .show()
+                }else if(passwordReg != passwordRegRip){
+                    Toast.makeText(applicationContext, "Le password inserite non coincidono", Toast.LENGTH_SHORT)
+                        .show()
 
-        }else if(passwordReg != passwordRegRip){
-            Toast.makeText(applicationContext, "Le password inserite non coincidono", Toast.LENGTH_SHORT)
-                .show()
+                }else if(passwordReg.length<6){
+                    Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
+                }else{
+                    createUser(emailAdressInput.text.toString(),passwordInput.text.toString())
+                }
 
-        }else if(passwordReg.length<6){
-            Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
-        }else{
-            createUser(emailAdressInput.text.toString(),passwordInput.text.toString())
+            }
         }
 
     }
@@ -112,36 +116,31 @@ class RegistrazionePage : AppCompatActivity() {
 
     }
 
-    private fun isAbilitato(mailProf:String): Boolean {
-        var isAbilitato = true
+    private fun isAbilitato(mailProf:String, callback: (Boolean) -> Unit){
 
         firebaseRef = FirebaseDatabase.getInstance().getReference("AccountDisabilitati")
 
-        firebaseRef.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for (snap in snapshot.children) {
-                        try {
-                            val dati = snap.getValue(AccountDisabilitati::class.java)
-                            val mailDisabilitata = dati?.mailProf
+        firebaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                var isEmailFound = false
 
-                            if(mailDisabilitata == mailProf){
-                                isAbilitato = false
-                            }
+                for (snapshot in dataSnapshot.children) {
 
-                        } catch (e: Exception) {
-                            // Gestisci eventuali eccezioni durante il recupero dei dati del professore
-                            Toast.makeText(applicationContext, "problema durante il login, riprovare", Toast.LENGTH_SHORT).show()
-                        }
+                    val dati = snapshot.getValue(AccountDisabilitati::class.java)
+                    val professorEmail = dati?.mailProf
+
+                    if (professorEmail == mailProf) {
+                        isEmailFound = true
+                        break
                     }
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // Gestisci eventuali errori durante la lettura dei dati
-                    Toast.makeText(applicationContext, "onCanceled: errore lettura dati", Toast.LENGTH_SHORT).show()
 
                 }
-            })
+                callback(isEmailFound)
+            }
 
-        return isAbilitato
+            override fun onCancelled(databaseError: DatabaseError) {
+                callback(false)
+            }
+        })
     }
 }
