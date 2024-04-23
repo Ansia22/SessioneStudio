@@ -44,40 +44,44 @@ class LoginPage : AppCompatActivity() {
         val email = emailEditText.text.toString()
         val password = passwordEditText.text.toString()
 
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(applicationContext, "Inserisci username e password", Toast.LENGTH_SHORT).show()
+        isAbilitato(email){ emailPresente ->
+            if (emailPresente) {
+                Toast.makeText(applicationContext, "La mail inserita è stata disabilitata dai nostri admin, " +
+                        "cambiare account o riprovare", Toast.LENGTH_SHORT).show()
+            }else{
 
-        }else if (email == "admin" && password == "admin") {
-            val intent = Intent(this, RicercaAdminProf::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
+                if (email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(applicationContext, "Inserisci email e password", Toast.LENGTH_SHORT).show()
 
-        }else if(!isAbilitato(email)){
+                }else if (email == "admin" && password == "admin") {
+                    val intent = Intent(this, RicercaAdminProf::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
 
-            Toast.makeText(applicationContext, "La mail inserita è stata disabilitata dai nostri admin, " +
-                    "cambiare account o riprovare", Toast.LENGTH_SHORT).show()
+                } else if(password.length<6){
+                    Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
 
-        } else if(password.length<6){
-            Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
+                } else {
+                    auth.signInWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
+                        .addOnCompleteListener(this){task->
+                            if(task.isSuccessful){
+                                Toast.makeText(applicationContext, "Login eseguito correttamente con $email", Toast.LENGTH_SHORT).show()
 
-        } else {
-            auth.signInWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
-                .addOnCompleteListener(this){task->
-                    if(task.isSuccessful){
-                        Toast.makeText(applicationContext, "Login eseguito correttamente con $email", Toast.LENGTH_SHORT).show()
+                                getProfessorIdByEmail(email)
 
-                        getProfessorIdByEmail(email)
-
-                        passwordEditText.setText("")
-                        val intent = Intent(this, ProfiloPage::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(intent)
-                    }else{
-                        Toast.makeText(applicationContext, "Credenziali non valide", Toast.LENGTH_SHORT).show()
-                        passwordEditText.setText("")
-                        passwordEditText.setHintTextColor(Color.RED)
-                    }
+                                passwordEditText.setText("")
+                                val intent = Intent(this, ProfiloPage::class.java)
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                startActivity(intent)
+                            }else{
+                                Toast.makeText(applicationContext, "Credenziali non valide", Toast.LENGTH_SHORT).show()
+                                passwordEditText.setText("")
+                                passwordEditText.setHintTextColor(Color.RED)
+                            }
+                        }
                 }
+
+            }
         }
     }
 
@@ -111,37 +115,32 @@ class LoginPage : AppCompatActivity() {
             })
     }
 
-    private fun isAbilitato(mailProf:String): Boolean {
-        var abilitato = true
+    private fun isAbilitato(mailProf:String, callback: (Boolean) -> Unit){
 
         firebaseRef = FirebaseDatabase.getInstance().getReference("AccountDisabilitati")
 
-        firebaseRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (snap in snapshot.children) {
-                    try {
-                        val dati = snap.getValue(AccountDisabilitati::class.java)
-                        val mailDisabilitata = dati?.mailProf
+        firebaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                var isEmailFound = false
 
-                        if(mailDisabilitata == mailProf){
-                            abilitato = false
-                        }
+                for (snapshot in dataSnapshot.children) {
 
-                    } catch (e: Exception) {
-                        // Gestisci eventuali eccezioni durante il recupero dei dati del professore
-                        Toast.makeText(applicationContext, "problema durante il login, riprovare", Toast.LENGTH_SHORT).show()
+                    val dati = snapshot.getValue(AccountDisabilitati::class.java)
+                    val professorEmail = dati?.mailProf
+
+                    if (professorEmail == mailProf) {
+                        isEmailFound = true
+                        break
                     }
+
                 }
+                callback(isEmailFound)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Gestisci eventuali errori durante la lettura dei dati
-                Toast.makeText(applicationContext, "onCanceled: errore lettura dati", Toast.LENGTH_SHORT).show()
-
+                callback(false)
             }
         })
-
-        return abilitato
     }
 
     override fun onBackPressed() {
