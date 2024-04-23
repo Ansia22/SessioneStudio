@@ -6,17 +6,21 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.esempio.models.AESCrypt
 import com.example.esempio.models.Professor
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class RegistrazionePage : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var firebaseRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +47,11 @@ class RegistrazionePage : AppCompatActivity() {
         if (email.isEmpty() || passwordReg.isEmpty() || passwordRegRip.isEmpty()) {
             Toast.makeText(applicationContext, "Inserisci tutti i dati richiesti", Toast.LENGTH_SHORT)
                 .show()
+        }else if(!isAbilitato(email)){
+
+            Toast.makeText(applicationContext, "La mail inserita è stata disabilitata dai nostri admin, " +
+                    "cambiare account o riprovare", Toast.LENGTH_SHORT).show()
+
         }else if(passwordReg != passwordRegRip){
             Toast.makeText(applicationContext, "Le password inserite non coincidono", Toast.LENGTH_SHORT)
                 .show()
@@ -58,10 +67,11 @@ class RegistrazionePage : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email,passwordReg)
             .addOnCompleteListener(this){task->
                 if(task.isSuccessful){
+
+                    saveData()
+
                     Toast.makeText(baseContext,"Utente registrato correttamente",
                         Toast.LENGTH_SHORT).show()
-
-                        saveData()
 
                         val intent = Intent(this, InformazioniProfessore::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -86,10 +96,6 @@ class RegistrazionePage : AppCompatActivity() {
         val emailAdressInput = findViewById<EditText>(R.id.EmailAddress)
         val professorEmail = emailAdressInput.text.toString()
 
-        val passwordInput = findViewById<EditText>(R.id.Password)
-        val professorPassword = passwordInput.text.toString()
-        val key = Professor.getKey()
-        val professorPasswordCrypted = AESCrypt.encrypt(professorPassword, key)
 
         val professorNome = ""
         val professorCognome = ""
@@ -97,11 +103,41 @@ class RegistrazionePage : AppCompatActivity() {
         val professorIndirizzo = ""
         val professorDescrizione = ""
 
-        val professor = Professor(professorId,professorEmail,professorPasswordCrypted, professorNome, professorCognome, professorMaterie, professorIndirizzo, professorDescrizione)
+        val professor = Professor(professorId,professorEmail, professorNome, professorCognome, professorMaterie, professorIndirizzo, professorDescrizione)
 
         Professor.setVariabiliLogin(professorId, professorEmail)
 
         professorsRef.child(professorId).setValue(professor)
 
+    }
+
+    private fun isAbilitato(mailProf:String): Boolean {
+        var isDisabilitato = false
+
+        firebaseRef = FirebaseDatabase.getInstance().getReference("AccountDisabilitati")
+
+        firebaseRef.orderByChild("mailProf").equalTo(mailProf)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (snap in snapshot.children) {
+                        try {
+
+                            isDisabilitato = true
+
+                        } catch (e: Exception) {
+                            // Gestisci eventuali eccezioni durante il recupero dei dati del professore
+                            Toast.makeText(applicationContext, "problema durante il login, riprovare", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Gestisci eventuali errori durante la lettura dei dati
+                    Toast.makeText(applicationContext, "onCanceled: errore lettura dati", Toast.LENGTH_SHORT).show()
+
+                }
+            })
+
+        return isDisabilitato
     }
 }
