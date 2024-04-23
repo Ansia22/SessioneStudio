@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.esempio.models.AccountDisabilitati
 import com.example.esempio.models.Professor
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -111,33 +112,36 @@ class LoginPage : AppCompatActivity() {
     }
 
     private fun isAbilitato(mailProf:String): Boolean {
-        var isDisabilitato = false
+        var abilitato = true
 
         firebaseRef = FirebaseDatabase.getInstance().getReference("AccountDisabilitati")
 
-        firebaseRef.orderByChild("mailProf").equalTo(mailProf)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for (snap in snapshot.children) {
-                        try {
+        firebaseRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (snap in snapshot.children) {
+                    try {
+                        val dati = snap.getValue(AccountDisabilitati::class.java)
+                        val mailDisabilitata = dati?.mailProf
 
-                            isDisabilitato = true
-
-                        } catch (e: Exception) {
-                            // Gestisci eventuali eccezioni durante il recupero dei dati del professore
-                            Toast.makeText(applicationContext, "problema durante il login, riprovare", Toast.LENGTH_SHORT).show()
+                        if(mailDisabilitata == mailProf){
+                            abilitato = false
                         }
+
+                    } catch (e: Exception) {
+                        // Gestisci eventuali eccezioni durante il recupero dei dati del professore
+                        Toast.makeText(applicationContext, "problema durante il login, riprovare", Toast.LENGTH_SHORT).show()
                     }
                 }
+            }
 
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // Gestisci eventuali errori durante la lettura dei dati
-                    Toast.makeText(applicationContext, "onCanceled: errore lettura dati", Toast.LENGTH_SHORT).show()
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Gestisci eventuali errori durante la lettura dei dati
+                Toast.makeText(applicationContext, "onCanceled: errore lettura dati", Toast.LENGTH_SHORT).show()
 
-                }
-            })
+            }
+        })
 
-        return isDisabilitato
+        return abilitato
     }
 
     override fun onBackPressed() {
