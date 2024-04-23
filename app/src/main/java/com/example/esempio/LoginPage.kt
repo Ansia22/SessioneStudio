@@ -29,6 +29,12 @@ class LoginPage : AppCompatActivity() {
         auth = Firebase.auth
     }
 
+    fun passaRecuperoPassword(view: View){
+        val intent = Intent(this, RecuperaPassword::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+
     fun tornaHome(view: View){
         val intent = Intent(this, Home::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
