@@ -22,8 +22,8 @@
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="373dp"
-        android:layout_height="388dp"
+        android:layout_width="384dp"
+        android:layout_height="484dp"
         android:background="@drawable/cornice_tonda"
         android:backgroundTint="@color/white"
         android:paddingTop="20dp"
@@ -34,9 +34,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953"
+        app:layout_constraintVertical_bias="0.935"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -58,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView18"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.671" />
 
     <EditText
         android:id="@+id/password_input"
@@ -79,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView18"
-        app:layout_constraintVertical_bias="0.576"
+        app:layout_constraintVertical_bias="0.462"
         app:passwordToggleEnabled="true" />
 
     <Button
@@ -98,7 +99,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_input"
-        app:layout_constraintVertical_bias="0.353"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
     <ImageView
@@ -113,5 +114,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.008"
         app:srcCompat="@drawable/freccia_bianca" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recupera la password"
+        android:textStyle="italic|bold"
+        android:textSize="17dp"
+        android:onClick="passaRecuperoPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintEnd_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
