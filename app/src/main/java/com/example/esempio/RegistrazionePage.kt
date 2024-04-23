@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.esempio.models.AccountDisabilitati
 import com.example.esempio.models.Professor
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -112,17 +113,20 @@ class RegistrazionePage : AppCompatActivity() {
     }
 
     private fun isAbilitato(mailProf:String): Boolean {
-        var isDisabilitato = false
+        var isAbilitato = true
 
         firebaseRef = FirebaseDatabase.getInstance().getReference("AccountDisabilitati")
 
-        firebaseRef.orderByChild("mailProf").equalTo(mailProf)
-            .addValueEventListener(object : ValueEventListener {
+        firebaseRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (snap in snapshot.children) {
                         try {
+                            val dati = snap.getValue(AccountDisabilitati::class.java)
+                            val mailDisabilitata = dati?.mailProf
 
-                            isDisabilitato = true
+                            if(mailDisabilitata == mailProf){
+                                isAbilitato = false
+                            }
 
                         } catch (e: Exception) {
                             // Gestisci eventuali eccezioni durante il recupero dei dati del professore
@@ -138,6 +142,6 @@ class RegistrazionePage : AppCompatActivity() {
                 }
             })
 
-        return isDisabilitato
+        return isAbilitato
     }
 }
