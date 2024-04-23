@@ -51,7 +51,12 @@ class LoginPage : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
 
-        }else if(password.length<6){
+        }else if(!isAbilitato(email)){
+
+            Toast.makeText(applicationContext, "La mail inserita è stata disabilitata dai nostri admin, " +
+                    "cambiare account o riprovare", Toast.LENGTH_SHORT).show()
+
+        } else if(password.length<6){
             Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
 
         } else {
@@ -103,6 +108,36 @@ class LoginPage : AppCompatActivity() {
 
                 }
             })
+    }
+
+    private fun isAbilitato(mailProf:String): Boolean {
+        var isDisabilitato = false
+
+        firebaseRef = FirebaseDatabase.getInstance().getReference("AccountDisabilitati")
+
+        firebaseRef.orderByChild("mailProf").equalTo(mailProf)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (snap in snapshot.children) {
+                        try {
+
+                            isDisabilitato = true
+
+                        } catch (e: Exception) {
+                            // Gestisci eventuali eccezioni durante il recupero dei dati del professore
+                            Toast.makeText(applicationContext, "problema durante il login, riprovare", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Gestisci eventuali errori durante la lettura dei dati
+                    Toast.makeText(applicationContext, "onCanceled: errore lettura dati", Toast.LENGTH_SHORT).show()
+
+                }
+            })
+
+        return isDisabilitato
     }
 
     override fun onBackPressed() {
