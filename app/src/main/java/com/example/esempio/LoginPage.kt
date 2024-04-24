@@ -71,14 +71,21 @@ class LoginPage : AppCompatActivity() {
                     auth.signInWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
                         .addOnCompleteListener(this){task->
                             if(task.isSuccessful){
-                                Toast.makeText(applicationContext, "Login eseguito correttamente con $email", Toast.LENGTH_SHORT).show()
 
-                                getProfessorIdByEmail(email)
+                                if(auth.currentUser?.isEmailVerified == true){
 
-                                passwordEditText.setText("")
-                                val intent = Intent(this, ProfiloPage::class.java)
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                startActivity(intent)
+                                    Toast.makeText(applicationContext, "Login eseguito correttamente con $email", Toast.LENGTH_SHORT).show()
+
+                                    getProfessorIdByEmail(email)
+
+                                    passwordEditText.setText("")
+                                    val intent = Intent(this, ProfiloPage::class.java)
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    startActivity(intent)
+
+                                }else{
+                                    Toast.makeText(applicationContext, "Verificare la mail proma di effettuare il login!", Toast.LENGTH_SHORT).show()
+                                }
                             }else{
                                 Toast.makeText(applicationContext, "Credenziali non valide", Toast.LENGTH_SHORT).show()
                                 passwordEditText.setText("")
