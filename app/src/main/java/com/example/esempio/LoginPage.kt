@@ -84,7 +84,7 @@ class LoginPage : AppCompatActivity() {
                                     startActivity(intent)
 
                                 }else{
-                                    Toast.makeText(applicationContext, "Verificare la mail proma di effettuare il login!", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(applicationContext, "Verificare la mail prima di effettuare il login!", Toast.LENGTH_SHORT).show()
                                 }
                             }else{
                                 Toast.makeText(applicationContext, "Credenziali non valide", Toast.LENGTH_SHORT).show()
