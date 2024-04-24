@@ -131,6 +131,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="@drawable/googleborder"
+        android:onClick="googleLogin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -147,6 +148,7 @@
             android:layout_marginLeft="11dp"
             android:layout_marginRight="11dp"
             android:background="@color/white"
+            android:onClick="googleLogin"
             android:src="@drawable/google" />
 
         <Button
@@ -157,7 +159,8 @@
             android:text="Sign up with Google"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:onClick="googleLogin"/>
 
     </LinearLayout>
 
