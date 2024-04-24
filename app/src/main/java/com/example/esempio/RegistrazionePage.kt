@@ -48,7 +48,7 @@ class RegistrazionePage : AppCompatActivity() {
         isAbilitato(email){ emailPresente ->
             if (emailPresente) {
                 Toast.makeText(applicationContext, "La mail inserita è stata disabilitata dai nostri admin, " +
-                        "cambiare account o riprovare", Toast.LENGTH_SHORT).show()
+                        "cambiare email o riprovare", Toast.LENGTH_SHORT).show()
             }else{
 
                 if (email.isEmpty() || passwordReg.isEmpty() || passwordRegRip.isEmpty()) {
@@ -75,12 +75,7 @@ class RegistrazionePage : AppCompatActivity() {
 
                     saveData()
 
-                    Toast.makeText(baseContext,"Utente registrato correttamente",
-                        Toast.LENGTH_SHORT).show()
-
-                        val intent = Intent(this, InformazioniProfessore::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(intent)
+                    sendVerificationMail()
 
                 }else{
                     Toast.makeText(baseContext,"Mail non valida o già utilizzata",
@@ -142,5 +137,21 @@ class RegistrazionePage : AppCompatActivity() {
                 callback(false)
             }
         })
+    }
+
+    private fun sendVerificationMail(){
+
+        Thread.sleep(500)
+
+        auth.currentUser?.sendEmailVerification()?.addOnCompleteListener {
+
+            Toast.makeText(baseContext,"Verifica la tua email per completare la registrazione!",
+                Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this, Home::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+
+        }
     }
 }
