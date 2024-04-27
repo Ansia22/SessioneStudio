@@ -1,5 +1,10 @@
 package com.example.esempio.models
 
+/**
+ * Data class utilizzata per la gestione dei feedback.
+ * La classe è dotata di metodi get e set utilizzati per leggere e scrivere dati.
+ */
+
 data class Feedback(
     val id:String,
     val idProf:String,
