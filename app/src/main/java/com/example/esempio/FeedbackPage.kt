@@ -6,14 +6,15 @@ import android.view.View
 import android.widget.EditText
 import android.widget.RatingBar
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.esempio.R.id.ratingBar
 import com.example.esempio.models.Feedback
 import com.example.esempio.models.Professor
 import com.google.firebase.database.FirebaseDatabase
 
-
+/**
+ * Classe per la scrittura di feedback. Una volta inseriti i dati richiesti,
+ * tutte le informazioni verranno scritte nel database di Firebase.
+ */
 class FeedbackPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,12 +56,12 @@ class FeedbackPage : AppCompatActivity() {
 
         }else{
 
-        val feedback = Feedback(feedId,idProf,nomeCognome,numeroStelle,descrizioneFeed,dataFeed)
+            val feedback = Feedback(feedId,idProf,nomeCognome,numeroStelle,descrizioneFeed,dataFeed)
 
-        feedbackRef.child(feedId).setValue(feedback)
+            feedbackRef.child(feedId).setValue(feedback)
 
-        tornaProfessoreSelezionato()
-        Toast.makeText(applicationContext, "Feedback pubblicato con successo!", Toast.LENGTH_SHORT).show()
+            tornaProfessoreSelezionato()
+            Toast.makeText(applicationContext, "Feedback pubblicato con successo!", Toast.LENGTH_SHORT).show()
 
         }
 
