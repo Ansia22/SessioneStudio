@@ -21,6 +21,25 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+/**
+ * Classe per la gestione della schermata home dell'utente.
+ * Terminato il caricamento, l'utente può decidere quale operazione svolgere
+ * all'interno dell'applicazione. Login, Registrazione, Login con Google, Ricerca Professori.
+ *
+ * Il metodo "fetchData" si limita a leggere nel database di firebase.
+ * Esso non ha alcuno scopo ma testando l'applicazione abbiamo notato che non è possibile in
+ * alcun modo effettuare il login senza tale metodo. Se invece accediamo al database prima di effettuare
+ * l'autenticazione dell'utente, l'applicazione funziona correttamente.
+ *
+ * La classe contiene inoltre i metodi per la gestione del login con google.
+ * Se il professore effettua il login con google per la prima volta con la mail selezionata,
+ * verrà creato un nuovo utente in firebase. E' quindi necessario verificare se la mail utilizzata
+ * è gia presente nel database oppure se bisogna creare un nuovo utente con una nuova chiave pimaria.
+ *
+ * E' infine necessario verificare se l'account autenticato con google
+ * non sia stato precedentemente disabilitato dagli admin.
+ */
+
 class Home : AppCompatActivity() {
 
     private lateinit var firebaseRef : DatabaseReference
@@ -78,19 +97,24 @@ class Home : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Accesso riuscito
+
                     val user = auth.currentUser
 
                     isAbilitato(user?.email.toString()){ emailAbilitata ->
                         if (emailAbilitata) {
+
                             Toast.makeText(applicationContext, "L'account selezionato è stato disabilitato dai nostri admin, " +
                                     "cambiare account o riprovare", Toast.LENGTH_SHORT).show()
+
                         }else{
+
                             Toast.makeText(applicationContext, "Login con Google riuscito: ${user?.email}", Toast.LENGTH_SHORT).show()
 
                             emailExist(user?.email.toString()){ emailPresente ->
                                 if (!emailPresente) {
+
                                     saveData(user?.email.toString(), user?.displayName.toString())
+
                                 }
                             }
 
