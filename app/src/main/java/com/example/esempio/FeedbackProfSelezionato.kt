@@ -17,6 +17,14 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+/**
+ * Classe usata per la lettura di feedback.
+ * Grazie ad una ListView, l'utente può leggere tutti i feedback del professore
+ * selezionato letti dal database.
+ * Viene inolstre stampato a video la media delle valutazioni del professore.
+ * L'utente può senezionare i singoli feedback e leggere la sua descrizione.
+ */
+
 class FeedbackProfSelezionato : AppCompatActivity() {
 
     private lateinit var firebaseRef: DatabaseReference
@@ -91,6 +99,7 @@ class FeedbackProfSelezionato : AppCompatActivity() {
                             val idFeedback = feedback?.id
 
                             if(nomeCognome!=null && idFeedback != null){
+
                                 datiFeed.add("$nomeCognome, valutazione: $numeroStelle" )
                                 idFeed.add(idFeedback)
 
