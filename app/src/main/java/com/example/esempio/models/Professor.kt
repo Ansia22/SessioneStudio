@@ -1,5 +1,9 @@
 package com.example.esempio.models
 
+/**
+ * Data class utilizzata per la gestione dei professor.
+ * La classe è dotata di metodi get e set utilizzati per leggere e scrivere dati.
+ */
 data class Professor(
     val id: String,
     val email: String,
