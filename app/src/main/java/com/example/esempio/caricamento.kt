@@ -7,6 +7,11 @@ import android.os.Handler
 import android.content.Intent
 import android.util.Log
 
+/**
+ * Classe per la gestione del caricamento iniziale.
+ * L'icona di caricamento è puramente "estetica", la durata è di 3 secondi.
+ * L'activity viene distrutta alla fine del caricamento
+ */
 class Caricamento : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
