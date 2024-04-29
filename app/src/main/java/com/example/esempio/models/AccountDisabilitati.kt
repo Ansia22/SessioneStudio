@@ -8,5 +8,5 @@ data class AccountDisabilitati(
     val mailProf: String
 ){
     constructor() : this("", "")
-    companion object {}
+    companion object
 }
