@@ -46,7 +46,7 @@ class RegistrazionePage : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
-    fun RegistraUtente(view: View){
+    fun registraUtente(view: View){
 
         val emailAdressInput = findViewById<EditText>(R.id.EmailAddress)
         val passwordInput = findViewById<EditText>(R.id.Password)
