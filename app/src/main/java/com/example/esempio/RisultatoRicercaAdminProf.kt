@@ -18,6 +18,15 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+/**
+ * Pagina utilizzata dagli admin contenente i dati del prof selezionato.
+ *
+ * La classe permette di eliminare un account, in particolare premendo
+ * il bottone "elimina" e aver confermato i dati nel database verranno eliminati,
+ * mail e id saranno inseriti dell'elenco degli account disabilitati e tutti
+ * i feedback legati all'account verranno eliminati
+ */
+
 class RisultatoRicercaAdminProf : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
@@ -79,7 +88,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
 
     }
 
-    private fun impostaDatiProf(nome:String,cognome:String,materie:String,indirizzo:String,orari:String,){
+    private fun impostaDatiProf(nome:String,cognome:String,materie:String,indirizzo:String,orari:String){
         val idText = findViewById<TextView>(R.id.idProfessore)
         val mailText = findViewById<TextView>(R.id.mailProfessore)
         val orariText = findViewById<TextView>(R.id.orariProfessore)
@@ -88,13 +97,13 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
         val materieText =findViewById<TextView>(R.id.materieProfessore)
         val indirizzoText =findViewById<TextView>(R.id.indirizzoProfessore)
 
-        idText.setText(professorId)
-        mailText.setText(professorMail)
-        orariText.setText(orari)
-        nomeText.setText(nome)
-        cognomeText.setText(cognome)
-        materieText.setText(materie)
-        indirizzoText.setText(indirizzo)
+        idText.text = professorId
+        mailText.text = professorMail
+        orariText.text = orari
+        nomeText.text = nome
+        cognomeText.text = cognome
+        materieText.text = materie
+        indirizzoText.text = indirizzo
 
     }
     fun cancellaAccount(view: View){
@@ -139,7 +148,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
                 // Eliminazione riuscita
                 Toast.makeText(applicationContext, "Dati eliminati correttamente", Toast.LENGTH_SHORT).show()
             }
-            .addOnFailureListener { e ->
+            .addOnFailureListener { _ ->
                 // errore se l'eliminazione fallisce
                 Toast.makeText(applicationContext, "Problema eliminazione dei dati", Toast.LENGTH_SHORT).show()
             }
@@ -157,7 +166,7 @@ class RisultatoRicercaAdminProf : AppCompatActivity() {
                             // Eliminazione riuscita
                             Toast.makeText(applicationContext, "Feedback eliminati correttamente", Toast.LENGTH_SHORT).show()
                         }
-                        .addOnFailureListener { e ->
+                        .addOnFailureListener { _ ->
                             // errore se l'eliminazione fallisce
                             Toast.makeText(applicationContext, "Problema eliminazione dei feedback", Toast.LENGTH_SHORT).show()
                         }
