@@ -45,7 +45,7 @@ class Home : AppCompatActivity() {
     private lateinit var firebaseRef : DatabaseReference
     private lateinit var auth: FirebaseAuth
     private lateinit var googleApiClient: GoogleApiClient
-    private val RC_SIGN_IN = 9001
+    private val signIn = 9001
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +59,7 @@ class Home : AppCompatActivity() {
 
         // Configurazione del GoogleApiClient
         googleApiClient = GoogleApiClient.Builder(this)
-            .enableAutoManage(this) { connectionResult ->
+            .enableAutoManage(this) { _ ->
                 Toast.makeText(applicationContext, "Erorre di connessione", Toast.LENGTH_SHORT).show()
             }
             .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
@@ -73,13 +73,13 @@ class Home : AppCompatActivity() {
 
     fun googleLogin(view: View){
         val signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient)
-        startActivityForResult(signInIntent, RC_SIGN_IN)
+        startActivityForResult(signInIntent, signIn)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == signIn) {
             val result = data?.let { Auth.GoogleSignInApi.getSignInResultFromIntent(it) }
             if (result?.isSuccess == true) {
                 // Accesso con Google riuscito, autenticazione con Firebase
@@ -188,7 +188,7 @@ class Home : AppCompatActivity() {
         }
     }
 
-    fun getNomeCognomeUtenteLoggato(displayName: String): Pair<String?, String?> {
+    private fun getNomeCognomeUtenteLoggato(displayName: String): Pair<String?, String?> {
         val auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
 
