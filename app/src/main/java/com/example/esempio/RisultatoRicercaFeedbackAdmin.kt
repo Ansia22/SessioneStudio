@@ -94,7 +94,7 @@ class RisultatoRicercaFeedbackAdmin : AppCompatActivity() {
 
     fun eliminaFeedback(view:View){
         AlertDialog.Builder(this)
-            .setMessage("Sicuro di voler eliminare definitivamente l'account e i suoi feedback?")
+            .setMessage("Sicuro di voler eliminare definitivamente il feedback?")
             .setCancelable(true)
             .setPositiveButton("Ok") { _, _ ->
                 val intent = Intent(this, RicercaAdminFeedback::class.java)
