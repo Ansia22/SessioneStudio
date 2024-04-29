@@ -17,14 +17,14 @@ class Caricamento : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val DELAY_TIME = 3000
+        val delayTime = 3000
         val handler = Handler()
         handler.postDelayed({
             val intent = Intent(this@Caricamento, Main::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
-        }, DELAY_TIME.toLong()) //  Converte il ritardo in un tipo Long
+        }, delayTime.toLong()) //  Converte il ritardo in un tipo Long
     }
 
     override fun onDestroy() {
