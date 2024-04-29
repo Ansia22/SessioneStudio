@@ -17,6 +17,15 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+/**
+ * Classe per la gestione dei professori da parte degli admin.
+ *
+ * Dopo aver effettuato il login come amministratore, verranno
+ * visualizzati tutti i professori abilitati contenuti nel database
+ * di firebase. Premendo sul professore, si potranno leggere le sue
+ * informazioni personali legate all'account oppure leggere i suoi feedback.
+ */
+
 class RicercaAdminProf : AppCompatActivity() {
 
     private lateinit var firebaseRef: DatabaseReference
@@ -102,7 +111,6 @@ class RicercaAdminProf : AppCompatActivity() {
         searchView = findViewById(R.id.barraRicercaAdmin)
 
 
-
         val userAdapter : ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_list_item_1, mailList)
         listView.adapter = userAdapter
 
@@ -118,7 +126,7 @@ class RicercaAdminProf : AppCompatActivity() {
 
         })
 
-        listView.setOnItemClickListener{adapterView, view, i, l->
+        listView.setOnItemClickListener{ _, _, i, _ ->
             AlertDialog.Builder(this)
                 .setMessage("Cosa si desidera visualizzare?")
                 .setCancelable(true)
