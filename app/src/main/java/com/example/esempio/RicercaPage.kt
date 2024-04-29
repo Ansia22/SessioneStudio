@@ -7,6 +7,9 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.esempio.models.Professor
 
+/**
+ * Pagina dedicata agli studenti per la ricerca dei professori.
+ */
 
 class RicercaPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
