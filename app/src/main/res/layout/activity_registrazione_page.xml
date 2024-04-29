@@ -74,7 +74,7 @@
         android:layout_width="151dp"
         android:layout_height="53dp"
         android:background="@drawable/cornice_tonda"
-        android:onClick="RegistraUtente"
+        android:onClick="registraUtente"
         android:text="REGISTRATI"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
