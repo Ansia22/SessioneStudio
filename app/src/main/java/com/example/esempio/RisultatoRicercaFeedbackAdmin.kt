@@ -6,18 +6,22 @@ import android.view.View
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.esempio.models.Feedback
-import com.example.esempio.models.Professor
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+
+/**
+ * Pagina utilizzata dagli admin contenente i dati
+ * dei feedback del prof selezionato.
+ *
+ * La classe permette di eliminare un feedback, in particolare premendo
+ * il bottone "elimina", il feedback verrà eliminato dal database.
+ */
 
 class RisultatoRicercaFeedbackAdmin : AppCompatActivity() {
 
@@ -82,10 +86,10 @@ class RisultatoRicercaFeedbackAdmin : AppCompatActivity() {
         ratingBar.rating = stelle
         ratingBar.stepSize = .5f
 
-        idText.setText(id)
-        nomeText.setText(nomeCognome)
-        dataText.setText(data)
-        descrizioneText.setText(descrizione)
+        idText.text = id
+        nomeText.text = nomeCognome
+        dataText.text = data
+        descrizioneText.text = descrizione
     }
 
     fun eliminaFeedback(view:View){
@@ -97,6 +101,7 @@ class RisultatoRicercaFeedbackAdmin : AppCompatActivity() {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intent)
+
                 eliminaFeedbackSelezionato()
                 finish()
 
@@ -115,8 +120,8 @@ class RisultatoRicercaFeedbackAdmin : AppCompatActivity() {
                 // Eliminazione riuscita
                 Toast.makeText(applicationContext, "Dati eliminati correttamente", Toast.LENGTH_SHORT).show()
             }
-            .addOnFailureListener { e ->
-                // Gestisci l'errore se l'eliminazione fallisce
+            .addOnFailureListener { _ ->
+                //eliminazione fallisce
                 Toast.makeText(applicationContext, "Problema eliminazione dei dati", Toast.LENGTH_SHORT).show()
             }
     }
