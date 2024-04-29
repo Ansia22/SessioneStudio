@@ -14,6 +14,15 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+/**
+ * Classe implementata per la gestione del recupero della password di un account specifico.
+ *
+ * Inserendo la propria mail personale, il professore riceverà un messaggio
+ * contenente un link (gestito da firebase) per il reset della password.
+ *
+ * Viene inoltre verificato che la mail inserita sia esistente e registrata correttamente.
+ */
+
 class RecuperaPassword : AppCompatActivity() {
 
     private lateinit var firebaseRef: DatabaseReference
