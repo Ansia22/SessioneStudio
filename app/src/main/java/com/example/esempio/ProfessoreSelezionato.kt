@@ -13,6 +13,15 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+/**
+ * Classe usata per la gestione delle informazioni dei professori cercati.
+ * L'utente utilizzando lo strumento di ricerca potrà individuare il professore
+ * più adatto alle sue esigienze e selezionandolo ne visualizzerà le informazioni.
+ *
+ * La classe sfrutta l'id del prof per cercare le informazioni nel database
+ * e renderle disponibili agli studenti.
+ */
+
 class ProfessoreSelezionato : AppCompatActivity() {
 
     private lateinit var firebaseRef : DatabaseReference
