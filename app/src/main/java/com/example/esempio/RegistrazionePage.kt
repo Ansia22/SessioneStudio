@@ -17,6 +17,17 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+/**
+ * Schermata dedicata alla registrazione dei professori
+ * con email e password.
+ *
+ * La classe permette di verificare se l'email inserita è
+ * già stata registrata, se è stata disabilitata dagli admin,
+ * verifica che le due password inserite coincidano e
+ * contengano almeno 6 caratteri, crea il nuovo professore nel database
+ * creando una chiave casuale e utilizzando l'email indicata
+ * ed invia una mail di verifica per attivare l'account.
+ */
 
 class RegistrazionePage : AppCompatActivity() {
 
@@ -104,8 +115,6 @@ class RegistrazionePage : AppCompatActivity() {
         val professorDescrizione = ""
 
         val professor = Professor(professorId,professorEmail, professorNome, professorCognome, professorMaterie, professorIndirizzo, professorDescrizione)
-
-        Professor.setVariabiliLogin(professorId, professorEmail)
 
         professorsRef.child(professorId).setValue(professor)
 
