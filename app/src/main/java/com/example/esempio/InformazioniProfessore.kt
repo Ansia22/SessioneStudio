@@ -13,6 +13,16 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+/**
+ * Classe usata per la gestione dei dati del professore.
+ *
+ * L'utente loggato potrà visualizzare, modificare e salvare le
+ * proprie informazioni personali.
+ *
+ * I dati visualizzati sono estratti dal database. Esso verrà aggiornato
+ * nel momento in cui l'utente modifica e salva i suoi dati.
+ */
+
 class InformazioniProfessore : AppCompatActivity() {
 
     private lateinit var firebaseRef : DatabaseReference
