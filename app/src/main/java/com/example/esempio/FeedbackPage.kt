@@ -66,7 +66,7 @@ class FeedbackPage : AppCompatActivity() {
         }
 
     }
-    fun tornaProfessoreSelezionato(){
+    private fun tornaProfessoreSelezionato(){
         val intent = Intent(this, ProfessoreSelezionato::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
