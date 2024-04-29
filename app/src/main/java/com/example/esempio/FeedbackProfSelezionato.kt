@@ -129,8 +129,8 @@ class FeedbackProfSelezionato : AppCompatActivity() {
         val ratingBar = findViewById<RatingBar>(R.id.mediaStelleFeed)
 
         if (mediaStelline.isEmpty()) {
-            stelleText.setText("Nessun feedback trovato per il professore")
-            mediaText.setText(" ")
+            stelleText.text = "Nessun feedback trovato per il professore"
+            mediaText.text = " "
             ratingBar.visibility = View.INVISIBLE
         }else{
 
@@ -154,7 +154,7 @@ class FeedbackProfSelezionato : AppCompatActivity() {
 
         val arrayAdapter : ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_list_item_1, datiFeed)
         listView.adapter = arrayAdapter
-        listView.setOnItemClickListener{adapterView, view, i, l->
+        listView.setOnItemClickListener{ _, _, i, _ ->
             passaFeedSelezionato()
             Feedback.setId(idFeed[i])
         }
