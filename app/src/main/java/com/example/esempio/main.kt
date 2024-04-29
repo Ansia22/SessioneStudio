@@ -10,6 +10,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
+/**
+ * Schermata visualizzata dopo il caricamento dell'applicazione.
+ *
+ * La pagina comprende il titolo "Sessione Studio".
+ * Premendo qualsiasi punto sullo schermo, si accede alla
+ * home dell'app.
+ */
 
 class Main : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
