@@ -69,9 +69,9 @@ class LeggiFeedbackUtente : AppCompatActivity() {
         ratingBar.rating = stelle
         ratingBar.stepSize = .5f
 
-        nomeText.setText(nomeCognome)
-        dataText.setText(data)
-        descrizioneText.setText(descrizione)
+        nomeText.text = nomeCognome
+        dataText.text = data
+        descrizioneText.text = descrizione
     }
 
     fun tornaPaginaPrecedente(view: View){
