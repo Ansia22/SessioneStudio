@@ -1,6 +1,5 @@
 package com.example.esempio
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -12,10 +11,19 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
+/**
+ * HomePage del profilo del professore.
+ *
+ * Effettuando il login verrà visualizzata questa schermata che
+ * permette di passare all'activity relativa alla gestione delle
+ * informazioni personali dell'account oppure di leggere
+ * i feedback personali del professore.
+ */
+
 class ProfiloPage : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    @SuppressLint("SetTextI18n")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profilo_page)
@@ -26,6 +34,7 @@ class ProfiloPage : AppCompatActivity() {
         val idProf = Professor.getIdProf()
         textId.text= "Il tuo id:  $idProf"
     }
+
     fun tornaLogin(view: View){
         AlertDialog.Builder(this)
             .setMessage("Effettuare il logout?")
