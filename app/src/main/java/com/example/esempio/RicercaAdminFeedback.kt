@@ -16,6 +16,14 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+/**
+ * Pagina usata dagli amministratori per visualizzare i feedback
+ * associati ad un professore.
+ *
+ * I feedback legati all'account del prof contenuti in firebase,
+ * verranno inseriti in una ListView e visualizzati a video.
+ */
+
 class RicercaAdminFeedback : AppCompatActivity() {
 
     private lateinit var firebaseRef: DatabaseReference
@@ -26,6 +34,8 @@ class RicercaAdminFeedback : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ricerca_admin_feedback)
+
+
         idFeedback = arrayListOf()
         nomeList = arrayListOf()
         ricercaNome()
@@ -101,7 +111,7 @@ class RicercaAdminFeedback : AppCompatActivity() {
             }
 
         })
-        listView.setOnItemClickListener{adapterView, view, i, l->
+        listView.setOnItemClickListener{ _, _, i, _ ->
             passaFeedbackSelezionato()
             Feedback.setId(idFeedback[i])
         }
