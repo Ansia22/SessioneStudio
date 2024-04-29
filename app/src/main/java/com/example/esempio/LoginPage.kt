@@ -18,6 +18,20 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+/**
+ * Pagina dedicata lla gestione del login con email e password.
+ *
+ * Grazie ai metodi forniti da firebase, viene verificato se la mail
+ * e la password inseriti sono corretti. In caso contrario verrà visualizzato
+ * un messaggio di errore.
+ *
+ * La classe verifica inoltre se la mail inserita è stata disabilitata dagli admin
+ * dell'applicazione. Inoltre l'utente prima di effettuare il login deve aver
+ * verificato la mail utilizzata durante la registrazione.
+ *
+ * inserendo "admin","admin" al posto delle credenziali si accederà alla
+ * pagina dedicata alla gestione degli account e feedback dei professori.
+ */
 
 class LoginPage : AppCompatActivity() {
 
@@ -26,6 +40,8 @@ class LoginPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
+
+
         auth = Firebase.auth
     }
 
@@ -57,14 +73,17 @@ class LoginPage : AppCompatActivity() {
             }else{
 
                 if (email.isEmpty() || password.isEmpty()) {
+
                     Toast.makeText(applicationContext, "Inserisci email e password", Toast.LENGTH_SHORT).show()
 
                 }else if (email == "admin" && password == "admin") {
+
                     val intent = Intent(this, RicercaAdminProf::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
 
                 } else if(password.length<6){
+
                     Toast.makeText(applicationContext, "La password deve contenere almeno 6 caratteri!", Toast.LENGTH_SHORT).show()
 
                 } else {
