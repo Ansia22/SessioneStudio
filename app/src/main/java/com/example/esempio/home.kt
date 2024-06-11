@@ -3,7 +3,6 @@ package com.example.esempio
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -68,6 +67,7 @@ class Home : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         firebaseRef = FirebaseDatabase.getInstance().getReference("Professori")
+
         fetchData()
     }
 
@@ -87,6 +87,7 @@ class Home : AppCompatActivity() {
                 firebaseAuthWithGoogle(account)
             } else {
                 // Accesso con Google non riuscito
+                Toast.makeText(applicationContext, "Accesso con google non riuscito ${result?.status}", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -115,6 +116,10 @@ class Home : AppCompatActivity() {
 
                                     saveData(user?.email.toString(), user?.displayName.toString())
 
+                                }else{
+
+                                    setDatiProf(user?.email.toString())
+
                                 }
                             }
 
@@ -126,8 +131,41 @@ class Home : AppCompatActivity() {
                     }
                 } else {
                     // Accesso con Firebase non riuscito
+                    Toast.makeText(applicationContext, "Accesso a firebase non riuscito", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun setDatiProf(mailProf: String){
+
+        firebaseRef = FirebaseDatabase.getInstance().getReference("Professori")
+
+        firebaseRef.orderByChild("email").equalTo(mailProf)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (snap in snapshot.children) {
+                        try {
+                            val professor = snap.getValue(Professor::class.java)
+                            val professorId = professor?.id
+
+                            if (professorId != null) {
+                                Professor.setVariabiliLogin(professorId, mailProf)
+                            }
+                        } catch (e: Exception) {
+                            // Gestisci eventuali eccezioni durante il recupero dei dati del professore
+                            Toast.makeText(applicationContext, "problema durante il login, riprovare", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Gestisci eventuali errori durante la lettura dei dati
+                    Toast.makeText(applicationContext, "onCanceled: errore lettura dati", Toast.LENGTH_SHORT).show()
+
+                }
+            })
+
     }
 
     private fun emailExist(mailProf:String, callback: (Boolean) -> Unit){
